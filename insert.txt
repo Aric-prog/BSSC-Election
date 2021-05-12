@@ -1,0 +1,11 @@
+from databasetes import db,Person, City, Address
+p = Person(name='alex')
+db.session.add(p)
+db.session.flush()
+a = Address(email = 'asd@ad', person_id=p.id)
+db.session.add(a)
+c = City(CityName='pku', person_id=p.id)
+db.session.add(c)
+db.session.commit()
+c2 = City(CityName='pku', person_id=p.id)
+db.session.add(c2)
