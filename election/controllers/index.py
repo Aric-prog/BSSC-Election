@@ -24,14 +24,16 @@ def index():
 
     return "index"
 
-@bp.route("/vote/<int:candidate_id>", methods=["POST"])
+@bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id):
-    
-    # if(not db.has_voted(session.get("NIM"))):
-    # Make database request to add vote
+    if(request.method == "GET"):
+        pass
+    elif(request.method == "POST"):
+        # if(not db.has_voted(session.get("ID"))):
+        # Make database request to add vote
+        pass
 
     return redirect(url_for("index.index"))
-    
 
 @bp.route("/exman_suggestion", methods=["GET", "POST"])
 def exman_suggestion():

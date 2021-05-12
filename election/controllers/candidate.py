@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, session, redirect, url_for, reques
 
 # Pages included here : 
 # - Blueprint page
-# - Candidate list page
 # - Result
 
 bp = Blueprint("candidate", __name__, url_prefix="/candidate")
@@ -14,6 +13,16 @@ def logged_in():
 
 @bp.route("/blueprint/<int:candidate_id>", methods=["GET", "POST"])
 def blueprint():
-    # Query from database visi misi from candidate id
-    # Get video link and display it
+    if(request.method == "GET"):
+        # Query from database visi misi from candidate id
+        # Get video link and display it
+        pass
+    elif(request.method == "POST"):
+        pass
     return "blueprint"
+
+@bp.route("/result")
+def result():
+    # Calculate the highest vote
+    # Give the data to the html and js
+    return "result"
