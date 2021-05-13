@@ -1,0 +1,109 @@
+html,
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+@font-face {
+    font-family: 'montserratregular';
+    src: url('/static/fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserratbold';
+    src: url('/static/fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bg-grey{background-color: #f2f2f2;}
+.bg-light-green{background-color: #aaCB51;}
+.bg-blue{background-color: #64A3D7;}
+.bg-red{background-color: #e04632;}
+.bg-dark-green{background-color: #00a16e;}
+.bg-orange{background-color: #f4b241;}
+.bg-purple{background-color: #7f60a6;}
+
+.text-grey{color: #f2f2f2;}
+.text-light-green{color: #aaCB51;}
+.text-blue{color: #64A3D7;}
+.text-red{color: #e04632;}
+.text-dark-green{color: #00a16e;}
+.text-orange{color: #f4b241;}
+.text-purple{color: #7f60a6;}
+
+.text-large{font-size: large;}
+
+.bg-top-right{
+    background-position: right top;
+    background-image: url(../assets/bg-top-right.png);
+    background-repeat: no-repeat;
+    background-size: 40vw;
+}
+
+.bg-bot-left{
+    background-position: left bottom;
+    background-image: url(../assets/bg-bot-left.png);
+    background-repeat: no-repeat;
+    background-size: 40vw;
+}
+
+.background-image{
+    z-index: -1;
+}
+
+header{
+    top: 0;
+    background-color: black;
+    height: 80px;
+    width: 100%;
+}
+
+header .logo{
+    width: 12.5vw;
+    height: 100%;
+}
+
+header .logo img{
+    object-fit: cover;
+    width: 80px;
+}
+header .header-right{
+    right: 0;
+}
+
+.content{
+    padding: 0px 12.5vw;
+}
+
+.profile{
+    width: 12.5vw;
+    font-family: 'montserratbold';
+}
+.profile img{
+    width: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.username{
+    color: #606060;
+}
+
+footer{
+    bottom: 0;
+    font-size: small;
+    text-align: center;
+    color: #64a3d7;
+}
+
+text{
+    font-family: 'montserratregular';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bold-text{
+    font-family: 'montserratbold';
+}

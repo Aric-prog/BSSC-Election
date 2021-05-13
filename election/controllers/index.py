@@ -18,11 +18,10 @@ def logged_in():
     # elif not session.get("accepted_terms") and UserId exist in suggestion:
     #     redirect(url_for('index.rules'))
 
+# For now this is used for testing pages
 @bp.route("/")
 def index():
-    # Database request check
-
-    return "index"
+    return render_template('base.html', username="contoh nama")
 
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id):
