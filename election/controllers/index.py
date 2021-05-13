@@ -21,7 +21,7 @@ def logged_in():
 # For now this is used for testing pages
 @bp.route("/")
 def index():
-    return render_template('base.html', username="contoh nama")
+    return render_template('profile.html', username="contoh nama")
 
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id):

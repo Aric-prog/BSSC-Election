@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type='text/css'>.element,html{scrollbar-width:none}html::-webkit-scrollbar,.element::-webkit-scrollbar{display:none}</style>
-    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" as="style">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -26,11 +25,11 @@
                     <img src="{{url_for('static',filename='assets/portrait.png')}}" alt="" class="p-2">
                 </div>
                 <text class="username bold-text h-100 p-3">
-                    {{ username }}
+                    {{ session.get("username") }}
                 </text>
             </div>
         </header>
-        <div class="content w-100 flex-grow-1">
+        <div class="w-100 flex-grow-1">
             {% block content %}{% endblock %}
         </div>
         <footer class="py-2 w-100">
