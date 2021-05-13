@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
 
+
 db = SQLAlchemy(app)
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -19,31 +20,31 @@ class User(db.Model):
     password= db.Column(db.String(50), nullable=False)
 
     # Foreign Key
-    position_id = db.Column(db.Integer, db.ForeignKey('position.position_id'), nullable=False, unique=True)
-    division_id = db.Column(db.Integer, db.ForeignKey('division.division_id'), nullable=False, unique=True)
+    position_id = db.Column(db.Integer, db.ForeignKey('position.position_id'), nullable=False)
+    division_id = db.Column(db.Integer, db.ForeignKey('division.division_id'), nullable=False)
 
     # Relationship
-    suggestions  = db.relationship('User', backref='suggestion', lazy=True)
-    questions    = db.relationship('User', backref='questions', lazy = True)
-    votes        = db.relationship('User', backref='vote', lazy = True, uselist = False)
+    suggestions  = db.relationship('Suggestion', backref='user', lazy=True)
+    questions    = db.relationship('Question', backref='user', lazy = True)
+    votes        = db.relationship('Vote', backref='user', lazy = True, uselist = False)
 
 class Position(db.Model):
     position_id     = db.Column(db.Integer, primary_key=True)
     position_name   = db.Column(db.String(120), nullable=False)
 
     # relationship
-    positions       = db.relationship('Position', backref='user', lazy=True, uselist=False)
+    positions       = db.relationship('User', backref='position', lazy=True)
 
 class Division(db.Model):
     division_id     = db.Column(db.Integer, primary_key=True)
     division_name   = db.Column(db.String(120), nullable=False)
 
     # relationship
-    divisions       = db.relationship('Division', backref='user', lazy=True, uselist=False)
+    divisions       = db.relationship('User', backref='division', lazy=True)
 
 class Suggestion(db.Model):
-    suggestion_id     = db.Column(db.Integer, primary_key=True)
-    suggestion_name   = db.Column(db.String(50), nullable=False)
+    suggestion_id         = db.Column(db.Integer, primary_key=True)
+    suggestion_name       = db.Column(db.String(50), nullable=False)
     suggestion_division   = db.Column(db.String(50), nullable=False)
 
     #Foreign Key
@@ -58,8 +59,8 @@ class Candidate(db.Model):
     candidate_video    = db.Column(db.String(100), nullable=False)
 
     #relationship
-    questions    = db.relationship('Candidate', backref='questions', lazy = True)
-    votes        = db.relationship('Candidate', backref='vote', lazy = True)
+    questions    = db.relationship('Question', backref='candidate', lazy = True)
+    votes        = db.relationship('Vote', backref='candidate', lazy = True)
 
 class Question(db.Model):
     question_id             = db.Column(db.Integer, primary_key=True)
