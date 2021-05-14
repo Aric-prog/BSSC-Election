@@ -6,49 +6,47 @@
 {% endblock %}
 
 {% block content %}
-<body>
-    <div class="content">
-        <div class="welcome-profile">
-            <div class="profile-photo">
-                <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="">
-            </div>
-            <div class="profile-detail">
-                Welcome,
-                <br>
-                <div class="profile-name">
-                    Ivano Ekasetia Dhojopatmo(Nama Lengkap)
-                </div>    
-                <div class="profile-title">
-                    Staff of Information Technology Division(Jabatan & Divisi)
-                </div>
-            </div>
+<div class="content">
+    <div class="welcome-profile">
+        <div class="profile-photo">
+            <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="">
         </div>
-
-        <div class="account">
-            <div class="account-info">
-                <h2>Account Info</h2>
-                <div class="account-info-detail">
-                    <div class="detail">
-                        <div class="category">NIM</div> <div class="isi">2301863345(NIM)</div>
-                    </div>
-                    <div class="detail">
-                        <div class="category">Place of Birth</div> <div class="isi">Mojokerto(POB)</div>
-                    </div>
-                    <div class="detail">
-                        <div class="category">Date of Birth</div> <div class="isi">3 Maret 2001(DOB)</div>
-                    </div>
-                    <div class="detail">
-                        <div class="category">Email</div> <div class="isi">ivano.dhojopatmo@binus.ac.id(Email)</div>
-                    </div>
-                </div>
-            </div>
-            <div class="vote">
-                <h2>Vote Remaining</h2>
-                <div class="vote-count">
-                    ?
-                </div>
+        <div class="profile-detail">
+            Welcome,
+            <br>
+            <div class="profile-name">
+                Ivano Ekasetia Dhojopatmo(Nama Lengkap)
+            </div>    
+            <div class="profile-title">
+                Staff of Information Technology Division(Jabatan & Divisi)
             </div>
         </div>
     </div>
-</body>
+
+    <div class="account">
+        <div class="account-info">
+            <h2>Account Info</h2>
+            <div class="account-info-detail">
+                <div class="detail">
+                    <div class="category">NIM</div> <div class="isi">2301863345(NIM)</div>
+                </div>
+                <div class="detail">
+                    <div class="category">Place of Birth</div> <div class="isi">Mojokerto(POB)</div>
+                </div>
+                <div class="detail">
+                    <div class="category">Date of Birth</div> <div class="isi">3 Maret 2001(DOB)</div>
+                </div>
+                <div class="detail">
+                    <div class="category">Email</div> <div class="isi">ivano.dhojopatmo@binus.ac.id(Email)</div>
+                </div>
+            </div>
+        </div>
+        <div class="vote">
+            <h2>Vote Remaining</h2>
+            <div class="vote-count">
+                ?
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

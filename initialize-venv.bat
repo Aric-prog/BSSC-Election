@@ -1,1 +1,1 @@
-python -m virtualenv env & pip install requirements.txt
+python -m virtualenv env & pip install -r requirements.txt
