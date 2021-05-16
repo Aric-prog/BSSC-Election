@@ -7,6 +7,7 @@
     <style type='text/css'>.element,html{scrollbar-width:none}html::-webkit-scrollbar,.element::-webkit-scrollbar{display:none}</style>
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" as="style">
     <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    <title>Login</title>
     <style>
         .input{
             border: 2px solid #64a3d7;
@@ -15,6 +16,10 @@
         }
         .button{
             border-radius: 10px;
+        }
+        #error{
+            display: none;
+            color: red;
         }
     </style>
 </head>
@@ -37,7 +42,10 @@
                             <text>Election Web 2021</text>
                         </div>
                         <div class="mb-2 mx-auto">
-                            <form action="index.html" method="post" class="d-flex flex-column">
+                            <form action="" class="d-flex flex-column">
+                                <div id="error">
+                                    Error !
+                                </div>
                                 <input class="text-center input mb-2" name="NIM" id="NIM" type="text" placeholder="NIM" value="">
                                 <input class="text-center input mb-2" name="password" id="password" type="password" placeholder="password" value="">
                                 <button class="btn bg-blue text-grey w-50 mx-auto button" type="submit">Log In</button>

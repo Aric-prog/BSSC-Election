@@ -1,0 +1,100 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Votes</title>
+<style>
+    .button{
+        border-radius: 10px;
+    }
+    .flickity-prev-next-button{
+        color: aqua;
+    }
+    .Candidates-cell{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url(../static/assets/candidate-border.png);
+        background-repeat: no-repeat;
+        background-size: 450px;
+        background-position: -100px -100px;
+        margin: 15px;
+        width: 225px;
+        height: 270px;
+        padding: 10px;
+        justify-content: space-between;
+        border: 1px solid #64A3D7;
+        border-radius: 30px;
+    }
+
+    .Candidates-cell h5{
+        overflow: hidden;
+        text-align: center;
+        margin-top: 1.5rem;
+        font-weight: bold;
+        max-height: 2.4em;
+    }
+
+    .Candidates-cell img{
+        margin-top: 30px;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 1px solid #000;
+        border-radius: 50%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column w-75 mx-auto justify-content-center">
+    <div class="row">
+        <div class="col-12 text-center mt-5 py-3 font-weight-bold text-blue h4">
+            Chairman Candidates of BSSC 12<sup>th</sup> Presidentcy
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex mx-auto justify-content-center" id="merchandise1-event">
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 1</h5>
+                </div>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 2</h5>
+                </div>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 3</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <button class="btn button bg-red text-grey px-4 py-1 font-weight-bold my-3" type="submit">VOTE NOW!</button>
+    </div>
+    <div class="d-flex justify-content-end align-items-end">
+        <button class="btn button bg-light-green text-grey px-4 font-weight-bold mt-4 " type="submit">Suggest an EXMAN</button>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/flickity.js')}} "></script>
+<script>
+    // Initialize flickity when there is enough content in carousel
+    console.log($('.Candidates-cell').width());
+    $(document).ready(() => {
+        $("#Candidates1-event").removeClass("d-flex justify-content-center");
+        $('#Candidates1-event').flickity({
+            wrapAround: true
+        });
+    });
+</script>
+{% endblock %}
