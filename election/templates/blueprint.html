@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Blueprint</title>
+<link rel="stylesheet" href="{{url_for('static',filename='css/blueprint.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="blueprint">
+    <br>
+    <br>
+    <br>
+    <p>Chairman Candidates of BSSC 12 <sup>th </sup> Presidency</p>
+    <div class="welcome-profile">
+        <div class="profile-photo">
+            <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="">
+        </div>
+        <div class="profile-detail">
+            Hi, my name is
+            <br>
+            <div class="profile-name">
+                Ivano Ekasetia Dhojopatmo(Nama Lengkap)
+            </div>    
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="vision-mission">
+        <div class="vision">
+            <h4>VISION</h4>
+            <div class="vision-detail">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam debitis alias dolorem id aut ratione, magni a reprehenderit at veniam repellendus harum qui ipsum nulla libero repellat pariatur deleniti reiciendis?(Isi Visi)
+            </div>
+        </div>
+        <div class="mission">
+            <h4>MISSION</h4>
+            <div class="mission-detail">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, sint. Aperiam quod ipsa odit animi minus sapiente, consequuntur nisi quas reprehenderit dignissimos saepe ratione id aspernatur quae. Aliquam, sequi tempora.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi autem accusantium impedit quis exercitationem! Consectetur dignissimos magnam totam laboriosam maxime ea libero quod quasi iste? Eos eum non nostrum qui?(Isi Misi)
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div class="video">
+        <h4>BLUEPRINT</h4>
+        <br>
+        <div class="video-detail">
+            <iframe width="800" height="450" src="https://www.youtube.com/embed/poBtvRZOEPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <br>
+        <br>
+        <a href="https://www.google.com/drive/">
+            <button class="blueprint-detail">
+                Download Blueprint
+            </button>
+        </a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+</div>
+{% endblock %}
