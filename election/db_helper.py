@@ -11,20 +11,24 @@ def reinit():
 
 # -> bool is the return type
 def has_voted(user_id : int) -> bool:
-    pass
+    q = User.query.filter_by(user_id = user_id).first().vote
+    if (q == 0):
+        return True
+    else :
+        return False
 
 def has_suggested(user_id : int) -> bool:
     pass
 
 # Returns the remaining vote for a user
 def vote_amount(user_id : int) -> int:
-    pass
+    return User.query.filter_by(user_id = user_id).first().vote
  
 def get_all_candidate() -> list:
-    pass
+    return Candidate.query.all()
 
 def get_candidate(candidate_id : int) -> Candidate:
-    pass
+    return Candidate.query.filter_by(candidate_id = candidate_id).first()
 
 # Returns the total amount of votes
 def total_votes() -> int:
@@ -34,10 +38,10 @@ def most_voted_candidate() -> Candidate:
     pass
 
 def get_all_user() -> list:
-    pass
+    return User.query.all()
 
 def get_user(user_id : int) -> User:
-    pass
+    User.query.filter_by(user_id = user_id).first()
 
 def get_user_division(user_id : int) -> str:
     pass
