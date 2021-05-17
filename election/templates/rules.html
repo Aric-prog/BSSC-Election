@@ -2,15 +2,7 @@
 
 {% block head %}
 <title>Rules</title>
-<style>
-    .button{
-        border-radius: 10px;
-    }
-    #error{
-        display: none;
-        color: red;
-    }
-</style>
+<link rel="stylesheet" href="{{url_for('static',filename='css/rules.css')}}">
 {% endblock %}
 
 {% block content %}

@@ -8,20 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" as="style">
     <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
     <title>Login</title>
-    <style>
-        .input{
-            border: 2px solid #64a3d7;
-            border-radius: 20px;
-            outline-width: 0px;
-        }
-        .button{
-            border-radius: 10px;
-        }
-        #error{
-            display: none;
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
 </head>
 <body>
     <div class="min-vh-100 position-relative d-flex flex-column container-xxl">
@@ -43,11 +30,11 @@
                         </div>
                         <div class="mb-2 mx-auto">
                             <form action="" class="d-flex flex-column">
-                                <div id="error">
+                                <div class="mb-2" id="error">
                                     Error !
                                 </div>
-                                <input class="text-center input mb-2" name="NIM" id="NIM" type="text" placeholder="NIM" value="">
-                                <input class="text-center input mb-2" name="password" id="password" type="password" placeholder="password" value="">
+                                <input class="text-center input_login mb-2" name="NIM" id="NIM" type="text" placeholder="NIM" value="">
+                                <input class="text-center input_login mb-2" name="password" id="password" type="password" placeholder="password" value="">
                                 <button class="btn bg-blue text-grey w-50 mx-auto button" type="submit">Log In</button>
                             </form>
                         </div>
