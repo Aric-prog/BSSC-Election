@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Votes</title>
+<link rel="stylesheet" href="{{url_for('static',filename='css/Votes.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column w-75 mx-auto justify-content-center">
+    <div class="row">
+        <div class="col-12 text-center mt-5 py-3 font-weight-bold text-blue h4">
+            Chairman Candidates of BSSC 12<sup>th</sup> Presidentcy
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex mx-auto justify-content-center" id="merchandise1-event">
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 1</h5>
+                </div>
+                <div class="bg-button_votes">
+                </div>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 2</h5>
+                </div>
+                <div class="bg-button_votes">
+                </div>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>produk 3</h5>
+                </div>
+                <div class="bg-button_votes">
+                </div>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-items-center mt-3">
+        <div class="h1 text-red font-weight-bold my-3">
+            Vote Your Future Chaiman!
+        </div>
+        <div class="h6 text-red">
+            Click on the image to vote.
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/flickity.js')}} "></script>
+<script>
+    // Initialize flickity when there is enough content in carousel
+    console.log($('.Candidates-cell').width());
+    $(document).ready(() => {
+        $("#Candidates1-event").removeClass("d-flex justify-content-center");
+        $('#Candidates1-event').flickity({
+            wrapAround: true
+        });
+    });
+</script>
+{% endblock %}
