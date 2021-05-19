@@ -1,0 +1,56 @@
+.result-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 240px;
+    padding-right: 240px;
+}
+
+.result-page h2{
+    margin-top: 180px;
+    font-weight: bold;
+    color: #64a3d7;
+}
+
+.profile-pict{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 80%;
+    background-image: url(../assets/chairman-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;   
+}
+
+.container-pict{
+    width: 290px;
+    height: 290px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.container-pict img{
+    width: 170%;
+    height: auto;  
+    margin-top: -70%;
+    margin-left: -35%;
+}
+
+.congrats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #64a3d7;
+}
+
+.congrats h1{
+    font-weight: bold;
+}
+
+.result{
+    margin-top: 200px;
+    margin-bottom: 200px;
+    color: #64a3d7;
+}
