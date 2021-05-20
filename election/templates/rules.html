@@ -13,20 +13,24 @@
                 Rules and Regulation
             </div>
         </div>
-        <div class="d-flex text-blue py-3">
+        <div class="d-flex text-blue py-3 mb-4">
             Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed optio quae nobis officia vitae maiores earum reiciendis, tempora ducimus quidem dolorem modi cupiditate, blanditiis, iusto minima voluptatem voluptas neque veritatis repellendus. Consequuntur rem tempore labore dolorem aut non, beatae neque eum dolorum incidunt, temporibus iure quidem magni, illum omnis!
         </div>
-        <form action="">
-            <div id="error">
-                Error !
-            </div>
-            <div class="d-flex mt-4 justify-content-center">
+        <form action="" class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-column">
+                <div id="error">
+                    Error !
+                </div>
                 <p><input class="align-items-center mr-2" name="agree_rules" id="agree_rules" type="checkbox">I understand all off the rules above.</p>
             </div>
-            <div class="d-flex my-2  justify-content-center">
+            <div class="d-flex my-2">
                 <button class="btn button bg-dark-green text-grey px-5" type="submit" id="agree">Let's Go!</button>
             </div>
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/rules.js')}} "></script>
 {% endblock %}
