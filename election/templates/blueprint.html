@@ -7,10 +7,7 @@
 
 {% block content %}
 <div class="blueprint">
-    <br>
-    <br>
-    <br>
-    <p>Chairman Candidates of BSSC 12 <sup>th </sup> Presidency</p>
+    <p>Chairman Candidates of BSSC 12<sup>th</sup> Presidency</p>
     <div class="welcome-profile">
         <div class="profile-photo">
             <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="">
@@ -23,10 +20,6 @@
             </div>    
         </div>
     </div>
-
-    <br>
-    <br>
-    <br>
 
     <div class="vision-mission">
         <div class="vision">
@@ -44,18 +37,12 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    
     <div class="video">
         <h4>BLUEPRINT</h4>
         <br>
         <div class="video-detail">
             <iframe width="800" height="450" src="https://www.youtube.com/embed/poBtvRZOEPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <br>
-        <br>
         <a href="https://www.google.com/drive/">
             <button class="blueprint-detail">
                 Download Blueprint
@@ -63,9 +50,56 @@
         </a>
     </div>
 
-    <br>
-    <br>
-    <br>
+    <div class="question-for-chairman">
+        <div class="question-title">
+            <img src="{{url_for('static',filename='assets/mail.png')}}" alt="">
+            <div>
+                <h5>Any question for</h5>
+                <h2>Ivano Ekasetia(Nama)</h2>
+            </div>
+        </div>
+        <form>
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <select id="subject" name="subject">
+                        <option disabled selected hidden>--Choose your subject here--</option>>
+                        <option value="australia">Australia</option>
+                        <option value="canada">Canada</option>
+                        <option value="usa">USA</option>
+                    </select>
+                    <p id="error-subject">Please choose your subject!</p>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-25">
+                    <label for="question">Question</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="question" name="question" placeholder="Type your question here" style="height:200px"></textarea>
+                    <p id="error-question">Please write down your question!</p>
+                </div>
+            </div>
+
+            <div class="row-button">
+                <input class="submit-btn" type="button" value="Submit" id="submitBtn" onclick="isValidate()">
+            </div>
+        </form>
+    </div>
+
+    <div id="modal" class="notification-container">
+        <div class="notification">
+            <h4>Your question has been</h4>
+            <h4>submitted successfully.</h4>
+            <button class="close-btn" id="closeBtn">Okay!</button>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static',filename='js/blueprint.js')}}"></script>
 {% endblock %}
