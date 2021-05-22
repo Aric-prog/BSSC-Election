@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request
-
+from election.db_helper import has_suggested
 # Pages included here: 
 # - Vote page
 # - Exman suggestion page
@@ -21,7 +21,7 @@ def logged_in():
 # For now this is used for testing pages
 @bp.route("/")
 def index():
-    return render_template('profile.html', username="contoh nama")
+    return render_template('votes.html', username="contoh nama")
 
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id):
@@ -40,8 +40,8 @@ def exman_suggestion():
         return "exman_suggestion"    
     elif(request.method == "POST"):
         # Check if user has suggested or not from database i guess
-        has_suggested = False
-        if(has_suggested):
+        suggested = has_suggested(session["user_id"])
+        if(suggested):
             return redirect(url_for("index.index"))
         else:
             form = request.form

@@ -18,7 +18,7 @@
                 {{ session.get("username") }}
             </div>    
             <div class="profile-title">
-                {{ session.get("position") }} of {{ session.get("division")}} Division
+                {{ user["position"] }} of {{ user["division"] }} Division
             </div>
         </div>
     </div>
@@ -28,16 +28,16 @@
             <h2>Account Info</h2>
             <div class="account-info-detail">
                 <div class="detail">
-                    <div class="category">NIM</div> <div class="isi">: {{session.get("NIM")}}</div>
+                    <div class="category">NIM</div> <div class="isi">: {{ user["NIM"]}}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Place of Birth</div> <div class="isi">: {{session.get("POB")}}</div>
+                    <div class="category">Place of Birth</div> <div class="isi">: {{ user["POB"] }}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Date of Birth</div> <div class="isi">: {{session.get("DOB")}}</div>
+                    <div class="category">Date of Birth</div> <div class="isi">: {{ user["DOB"] }}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Email</div> <div class="isi">: {{session.get("email")}}</div>
+                    <div class="category">Email</div> <div class="isi">: {{ user["email"] }}</div>
                 </div>
             </div>
         </div>

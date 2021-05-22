@@ -1,4 +1,4 @@
-from db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
+from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
 db.create_all()
 
 tempD = Division(division_name = 'IT')
@@ -31,18 +31,21 @@ db.session.add(tempU3)
 tempU4 = User(name= 'tip', NIM='230120938', POB='jkt', DOB='14 Desember 2000', email='alex@gmail.com', vote=1, password='jkt141200', position_id=q4.position_id, division_id=q1.division_id)
 db.session.add(tempU4)
 db.session.commit()
-tempv = Vote(user_id = 1, candidate_id = 3)
-db.session.add(tempv)
-tempv2 = Vote(user_id = 2, candidate_id = 1)
-db.session.add(tempv2)
-tempv3 = Vote(user_id = 3, candidate_id = 2)
-db.session.add(tempv3)
-tempv4 = Vote(user_id = 4, candidate_id = 3)
-db.session.add(tempv4)
-db.session.commit()
 
-user = User.query.filter_by(name = 'alek').first()
-user.vote = 0
+### Uncomment this to simulate votes ###
+
+# tempv = Vote(user_id = 1, candidate_id = 3)
+# db.session.add(tempv)
+# tempv2 = Vote(user_id = 2, candidate_id = 1)
+# db.session.add(tempv2)
+# tempv3 = Vote(user_id = 3, candidate_id = 2)
+# db.session.add(tempv3)
+# tempv4 = Vote(user_id = 4, candidate_id = 3)
+# db.session.add(tempv4)
+# db.session.commit()
+
+# user = User.query.filter_by(name = 'alek').first()
+# user.vote = 0
 db.session.commit()
 
 

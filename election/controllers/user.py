@@ -1,6 +1,6 @@
 from election.db import User
 from flask import Blueprint, render_template, session, redirect, url_for, request
-from election.db_helper import check_password, get_user_division, get_user_from_NIM, get_user_position, vote_amount
+from election.db_helper import check_password, get_user, get_user_division, get_user_from_NIM, get_user_position, is_user_in_election_team, vote_amount
 
 # Pages included here :
 #  - User profile
@@ -12,9 +12,11 @@ bp = Blueprint("user", __name__, url_prefix="/")
 @bp.route("/login", methods=["GET","POST"])
 def login():
     if(request.method == "GET"):
+        if not session.get("logged_in") is None:
+            return redirect(url_for("index.index"))
         return render_template('login.html')
-    elif(request.method == "POST"):
         
+    elif(request.method == "POST"):
         form = request.form
         NIM = form["NIM"]
         password = form["password"]
@@ -24,19 +26,12 @@ def login():
         validated = check_password(NIM, password)
         if(validated):
             # Data saved here
-            user = get_user_from_NIM(NIM)
-            
-            session["division"] = get_user_division(user.user_id)
-            session["position"] = get_user_position(user.user_id)
-
-            session["email"] = user.email
-            session["user_id"] = user.user_id
-            session["POB"] = user.POB
-            session["DOB"] = user.DOB
+            user_ref = get_user_from_NIM(NIM)
+            user = build_user_dict_from(user_ref)
             
             session["logged_in"] = True
-            session["username"] = user.name
-            session["NIM"] = form["NIM"]
+            session["username"] = user_ref.name
+            session["user_id"] = user_ref.user_id
             
             return redirect(url_for("index.index"))
         else:
@@ -53,8 +48,21 @@ def logout():
 def profile():
     # TODO : Instantiate and cache election team nim list
     electionTeamNIMList = []
-    if(session.get("NIM") in electionTeamNIMList):
+    user = build_user_dict_from(get_user(session["user_id"]))
+    if(is_user_in_election_team(session["user_id"])):
         return "election team profile"
     else:
         print(session["user_id"])
-        return render_template('profile.html', user = session.get("user_ref"), vote_left = vote_amount(session["user_id"]))
+        return render_template('profile.html', user = user, vote_left = vote_amount(session["user_id"]))
+
+def build_user_dict_from(user_ref : User) -> dict:
+    user = {}
+    user["division"] = get_user_division(user_ref.user_id)
+    user["position"] = get_user_position(user_ref.user_id)
+
+    user["email"] = user_ref.email
+    user["POB"] = user_ref.POB
+    user["DOB"] = user_ref.DOB
+    
+    user["NIM"] = user_ref.NIM
+    return user
