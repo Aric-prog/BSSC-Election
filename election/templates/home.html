@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Votes</title>
+<link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+<script src="{{url_for('static', filename='js/home.js')}} "></script>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column w-75 mx-auto justify-content-center">
+    <div class="row">
+        <div class="col-12 text-center mt-5 py-3 font-weight-bold text-blue h4">
+            Chairman Candidates of BSSC 12<sup>th</sup> Presidency
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex mx-auto justify-content-center" id="merchandise1-event">
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>Nama 1</h5>
+                </div>
+                <div class="details1">
+                    <a href="#blueprint1"><p class="more-details">Click to view more details.</p></a>
+                </div>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>Nama 2</h5>
+                </div>
+                <div class="details2">
+                    <a href="#blueprint2"><p class="more-details">Click to view more details.</p></a>
+                </div>
+            </div>
+            <div class="Candidates-cell">
+                <div>
+                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="blood donation">
+                    <h5>Nama 3</h5>
+                </div>
+                <div class="details3">
+                    <a href="#blueprint3"><p class="more-details">Click to view more details.</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column align-items-center mt-3">
+        <div class="container">
+            <div class="col-12 text-center font-weight-bold text-red h4">
+                Countdown to Election Day
+            </div>
+            <div id="countdown">
+                <ul class="text-red">
+                    <li><span id="days" ></span>Days</li>
+                    <li class="titik-dua"><span >:</span>&nbsp</li>
+                    <li><span id="hours"></span>Hours</li>
+                    <li class="titik-dua"><span >:</span>&nbsp</li>
+                    <li><span id="minutes"></span>Minutes</li>
+                    <li class="titik-dua"><span >:</span>&nbsp</li>
+                    <li><span id="seconds"></span>Seconds</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="suggest-exman">
+        <button type="button" class="btn btn-success">Suggest an EXMAN</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/flickity.js')}} "></script>
+<script>
+    // Initialize flickity when there is enough content in carousel
+    console.log($('.Candidates-cell').width());
+    $(document).ready(() => {
+        $("#Candidates1-event").removeClass("d-flex justify-content-center");
+        $('#Candidates1-event').flickity({
+            wrapAround: true
+        });
+    });
+</script>
+{% endblock %}

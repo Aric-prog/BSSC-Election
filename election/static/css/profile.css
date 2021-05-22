@@ -59,7 +59,6 @@ body{
 .content{
     height: 800px;
     display: flex;
-    align-items: center;
     flex-direction: column;
     padding-left: 240px;
     padding-right: 240px;
@@ -68,6 +67,8 @@ body{
 .welcome-profile{
     display: flex;
     margin-top: 80px;
+    padding-left: 80px;
+    justify-content: left;
 }
 
 .profile-photo{
@@ -107,6 +108,7 @@ body{
 
 .account{
     display: flex;
+    justify-content: center;
     margin-top: 80px;
 }
 
