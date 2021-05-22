@@ -19,51 +19,15 @@
     border-radius: 30px;
 }
 
-.Candidates-cell:hover .details1{
-    opacity: 1;
-    transition:0.5s;
-    background-color: rgba(244,178,65,0.8);
-}
-.Candidates-cell:hover .details2{
-    opacity: 1;
-    transition:0.5s;
-    background-color: rgba(170,203,81,0.8);
-}
-.Candidates-cell:hover .details3{
-    opacity: 1;
-    transition:0.5s;
-    background-color: rgba(100,163,215,0.8);
-}
-.details1,.details2,.details3{
-    transition:0.75s;
-    position: absolute;
-    width: 225px;
-    height: 270px;
-    border-radius: 30px;
-    opacity:0;
-}
-.more-details{
-    height:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:0 10%;
-    text-align:center;
-    font-weight: bold;
-    font-size: large;
-    opacity:1;
-}
-.Candidates-cell p{
-    color:white;
-}
-
 .bg-button_votes{
     position: absolute;
     opacity: 0;
     width: 225px;
     height: 270px;
     border-radius: 30px;
+    background-color: #f4b241;
     transition: 0.5s;
+    
 }
 
 .button_votes{
