@@ -1,0 +1,116 @@
+
+.Candidates-cell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../assets/candidate-border.png);
+    background-repeat: no-repeat;
+    background-size: 450px;
+    background-position: -100px -100px;
+    margin: 15px;
+    width: 225px;
+    height: 270px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #64A3D7;
+    border-radius: 30px;
+}
+.Candidates-cell:hover .details1{
+    opacity: 1;
+    transition:0.5s;
+    background-color: rgba(244,178,65,0.8);
+}
+.Candidates-cell:hover .details2{
+    opacity: 1;
+    transition:0.5s;
+    background-color: rgba(170,203,81,0.8);
+}
+.Candidates-cell:hover .details3{
+    opacity: 1;
+    transition:0.5s;
+    background-color: rgba(100,163,215,0.8);
+}
+.details1,.details2,.details3{
+    transition:0.75s;
+    position: absolute;
+    width: 225px;
+    height: 270px;
+    border-radius: 30px;
+    opacity:0;
+}
+.more-details{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 10%;
+    text-align:center;
+    font-weight: bold;
+    font-size: large;
+    opacity:1;
+}
+
+.Candidates-cell h5{
+    overflow: hidden;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    max-height: 2.4em;
+    color: #64A3D7;
+}
+.Candidates-cell p{
+    color:white;
+}
+.Candidates-cell img{
+    margin-top: 30px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+.container {
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+}
+ul{
+    padding:0;
+}
+li {
+    width:90px;
+    display: inline-block;
+    font-size: 1em;
+    list-style-type: none;
+}
+
+li span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 1000;
+}
+.titik-dua{
+    width:auto;
+}
+
+.suggest-exman{
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.btn-success{
+    font-size: large;
+    padding:0.1em 0.8em 0.2em 0.8em;
+    font-weight: 650;
+    letter-spacing: 0.5px;
+    border-radius:10px;
+    border-color: #aacb51;
+    background-color:#aacb51!important;
+    transition: 1s !important;
+}
+.btn-success:hover{
+    
+    border-color: #99b649;
+    background-color: #99b649!important;
+}
