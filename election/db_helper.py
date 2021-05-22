@@ -1,4 +1,4 @@
-from db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
+from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
 import os
 
 def delete():
@@ -14,7 +14,7 @@ def has_voted(user_id : int) -> bool:
     q = User.query.filter_by(user_id = user_id).first().vote
     if (q == 0):
         return True
-    else :
+    else:
         return False
 
 def has_suggested(user_id : int) -> bool:
@@ -34,9 +34,13 @@ def get_all_candidate() -> list:
 def get_candidate(candidate_id : int) -> Candidate:
     return Candidate.query.filter_by(candidate_id = candidate_id).first()
 
+# TODO
+def get_candidate_from_NIM(NIM : str) -> Candidate:
+    pass
+
 # Returns the total amount of votes
 def total_votes() -> int:
-    return vote.query.count()
+    return Vote.query.count()
 
 def most_voted_candidate() -> Candidate:
     q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()
@@ -48,9 +52,16 @@ def get_all_user() -> list:
 def get_user(user_id : int) -> User:
     return User.query.filter_by(user_id = user_id).first()
 
+def get_user_from_NIM(NIM : str) -> User:
+    return User.query.filter_by(NIM = NIM).first()
+
 def get_user_division(user_id : int) -> str:
     q = Division.query.join(User, Division.division_id == User.user_id).filter_by(user_id = user_id).first()
     return  q.division_name
+
+# TODO
+def get_user_position(user_id : int) -> str:
+    return "Position Example"
 
 def is_user_in_election_team(user_id : int) -> bool:
     q = User.query.filter_by(user_id = user_id).first()
@@ -62,6 +73,7 @@ def is_user_in_election_team(user_id : int) -> bool:
 
 
 # Add vote to a certain candidate, returns True on success
+# TODO, check if user has voted or not, if not, cancel vote
 def add_vote(candidate_id : int, user_id : int) -> bool:
     temp = Vote(user_id = user_id, candidate_id = candidate_id)
     vote = User.query.filter_by(user_id = user_id).first()

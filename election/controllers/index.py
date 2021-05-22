@@ -11,8 +11,8 @@ bp = Blueprint("index", __name__, url_prefix="/")
 
 @bp.before_request
 def logged_in():
-    if not session.get("logged_in"):
-        redirect(url_for("user.login"))
+    if session.get("logged_in") is None:
+        return redirect(url_for("user.login"))
 
     # This is to check if the user has accepted terms or not
     # elif not session.get("accepted_terms") and UserId exist in suggestion:

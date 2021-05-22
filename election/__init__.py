@@ -1,6 +1,6 @@
 import os
-
 from flask import Flask
+from election.db import init_db
 from election import controllers
 
 def create_app(conf=None):
@@ -20,5 +20,8 @@ def create_app(conf=None):
         pass
 
     controllers.register_all_blueprints(app)
+    init_db(app)
 
     return app
+
+app = create_app()

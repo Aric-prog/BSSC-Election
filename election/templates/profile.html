@@ -15,10 +15,10 @@
             Welcome,
             <br>
             <div class="profile-name">
-                Ivano Ekasetia Dhojopatmo(Nama Lengkap)
+                {{ session.get("username") }}
             </div>    
             <div class="profile-title">
-                Staff of Information Technology Division(Jabatan & Divisi)
+                {{ session.get("position") }} of {{ session.get("division")}} Division
             </div>
         </div>
     </div>
@@ -28,23 +28,23 @@
             <h2>Account Info</h2>
             <div class="account-info-detail">
                 <div class="detail">
-                    <div class="category">NIM</div> <div class="isi">2301863345(NIM)</div>
+                    <div class="category">NIM</div> <div class="isi">: {{session.get("NIM")}}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Place of Birth</div> <div class="isi">Mojokerto(POB)</div>
+                    <div class="category">Place of Birth</div> <div class="isi">: {{session.get("POB")}}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Date of Birth</div> <div class="isi">3 Maret 2001(DOB)</div>
+                    <div class="category">Date of Birth</div> <div class="isi">: {{session.get("DOB")}}</div>
                 </div>
                 <div class="detail">
-                    <div class="category">Email</div> <div class="isi">ivano.dhojopatmo@binus.ac.id(Email)</div>
+                    <div class="category">Email</div> <div class="isi">: {{session.get("email")}}</div>
                 </div>
             </div>
         </div>
         <div class="vote">
             <h2>Vote Remaining</h2>
             <div class="vote-count">
-                ?
+                {{ vote_left }}
             </div>
         </div>
     </div>

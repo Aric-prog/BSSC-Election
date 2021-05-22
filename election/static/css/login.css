@@ -7,6 +7,6 @@
     border-radius: 10px;
 }
 #error{
-    display: none;
+    text-align: center;
     color: red;
 }

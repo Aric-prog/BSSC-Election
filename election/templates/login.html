@@ -29,10 +29,12 @@
                             <text>Election Web 2021</text>
                         </div>
                         <div class="mb-2 mx-auto">
-                            <form action="" class="d-flex flex-column">
+                            <form action="/login" method="POST" class="d-flex flex-column">
+                                {% if errorMessage %}
                                 <div class="mb-2" id="error">
-                                    Error !
+                                    {{ errorMessage }}
                                 </div>
+                                {% endif %}
                                 <input class="text-center input_login mb-2" name="NIM" id="NIM" type="text" placeholder="NIM" value="">
                                 <input class="text-center input_login mb-2" name="password" id="password" type="password" placeholder="password" value="">
                                 <button class="btn bg-blue text-grey w-50 mx-auto button" type="submit">Log In</button>
