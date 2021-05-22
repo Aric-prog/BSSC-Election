@@ -53,8 +53,11 @@
     font-size: large;
     opacity:1;
 }
-.Candidates-cell p{
+.Candidates-cell a p{
     color:white;
+}
+.Candidates-cell a{
+    text-decoration: none;
 }
 
 .bg-button_votes{
