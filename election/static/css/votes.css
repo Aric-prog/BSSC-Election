@@ -1,7 +1,3 @@
-.button{
-    border-radius: 10px;
-}
-
 .Candidates-cell{
     display: flex;
     flex-direction: column;
@@ -60,6 +56,13 @@
     text-decoration: none;
 }
 
+button{
+    border-radius: 10px !important;
+}
+button:hover{
+    color: #f2f2f2 !important;
+}
+
 .bg-button_votes{
     position: absolute;
     opacity: 0;
@@ -102,4 +105,54 @@
     object-fit: cover;
     border: 1px solid #000;
     border-radius: 50%;
+}
+
+.bg-popup{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(200, 200, 200);
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+.popup{
+    width: 300px;
+    background-color: #e04632;
+    border-radius: 20px;
+    overflow: auto;
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.popup .btn-okay{
+    border-radius: 10px;
+    color: #f2f2f2;
+}
+
+.suggest-exman{
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.btn-success{
+    font-size: large;
+    padding:0.1em 0.8em 0.2em 0.8em;
+    font-weight: 650;
+    letter-spacing: 0.5px;
+    border-radius:10px;
+    border-color: #aacb51;
+    background-color:#aacb51!important;
+    transition: 1s !important;
+}
+.btn-success:hover{
+    
+    border-color: #99b649;
+    background-color: #99b649!important;
 }
