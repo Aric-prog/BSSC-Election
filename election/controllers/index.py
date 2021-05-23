@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
 from election.db_helper import add_vote, has_suggested, has_voted, insert_suggestion
+from datetime import datetime
+import pytz
 # Pages included here: 
 # - Vote page
 # - Exman suggestion page
@@ -16,7 +18,19 @@ def logged_in():
 
 @bp.route("/")
 def index():
-    return render_template('votes.html', username=session["username"], has_suggested = has_suggested(session["user_id"]))
+    # Check the time here, give the time to frontend
+    WIBTimezone = pytz.timezone('Asia/Jakarta')
+    currentDate = datetime.now(WIBTimezone)
+    electionDate = datetime(2021, 6, 10)
+    print(currentDate)
+    print(electionDate)
+    print(has_suggested(session["user_id"]))
+    # Render with timer
+    return render_template('votes.html', 
+        username=session["username"], 
+        has_suggested = has_suggested(session["user_id"]),
+        currentTime = currentDate,
+        electionDate = electionDate)
 
 @bp.route("/vote")
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])

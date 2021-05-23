@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, session, redirect, url_for, reques
 # - Blueprint page
 # - Result
 
-bp = Blueprint("candidate", __name__, url_prefix="/candidate")
+bp = Blueprint("candidate", __name__, url_prefix="/")
 
 @bp.before_request
 def logged_in():
@@ -21,12 +21,12 @@ def blueprint(candidate_id):
         candidate_ref = get_candidate(candidate_id)
 
         candidate["name"] = candidate_ref.candidate_name
-        candidate["visi"] = candidate_ref.candidate_vision
-        candidate["misi"] = candidate_ref.candidate_mission
+        candidate["vision"] = candidate_ref.candidate_vision
+        candidate["mission"] = candidate_ref.candidate_mission
         candidate["video_link"] = candidate_ref.candidate_video
         candidate["drive_link"] = candidate_ref.candidate_blueprint
 
-        return render_template('blueprint.html', candidate)
+        return render_template('blueprint.html', candidate = candidate)
     elif(request.method == "POST"):
         # Post questions
         form = request.form
