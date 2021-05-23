@@ -24,6 +24,9 @@ def has_suggested(user_id : int) -> bool:
     else :
         return True
 
+def has_asked_question(user_id : int) -> bool:
+    pass
+
 # Returns the remaining vote for a user
 def vote_amount(user_id : int) -> int:
     return User.query.filter_by(user_id = user_id).first().vote

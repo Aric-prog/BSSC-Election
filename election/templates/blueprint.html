@@ -16,7 +16,7 @@
             Hi, my name is
             <br>
             <div class="profile-name">
-                Ivano Ekasetia Dhojopatmo(Nama Lengkap)
+                {{ candidate["name"] }}
             </div>    
         </div>
     </div>
@@ -25,13 +25,14 @@
         <div class="vision">
             <h4>VISION</h4>
             <div class="vision-detail">
+                {{ candidate["vision"] }}
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam debitis alias dolorem id aut ratione, magni a reprehenderit at veniam repellendus harum qui ipsum nulla libero repellat pariatur deleniti reiciendis?(Isi Visi)
             </div>
         </div>
         <div class="mission">
             <h4>MISSION</h4>
             <div class="mission-detail">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, sint. Aperiam quod ipsa odit animi minus sapiente, consequuntur nisi quas reprehenderit dignissimos saepe ratione id aspernatur quae. Aliquam, sequi tempora.
+                {{ candidate["mission"] }}
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi autem accusantium impedit quis exercitationem! Consectetur dignissimos magnam totam laboriosam maxime ea libero quod quasi iste? Eos eum non nostrum qui?(Isi Misi)
             </div>
         </div>
@@ -41,9 +42,9 @@
         <h4>BLUEPRINT</h4>
         <br>
         <div class="video-detail">
-            <iframe width="800" height="450" src="https://www.youtube.com/embed/poBtvRZOEPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="800" height="450" src="{{ candidate['video_link'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <a href="https://www.google.com/drive/">
+        <a href="{{ candidate['drive_link'] }}">
             <button class="blueprint-detail">
                 Download Blueprint
             </button>
@@ -55,7 +56,7 @@
             <img src="{{url_for('static',filename='assets/mail.png')}}" alt="">
             <div>
                 <h5>Any question for</h5>
-                <h2>Ivano Ekasetia(Nama)</h2>
+                <h2>{{ candidate["name"] }}</h2>
             </div>
         </div>
         <form>
