@@ -4,8 +4,7 @@
           hour = minute * 60,
           day = hour * 24;
 
-    let schedule = "May 25, 2021 00:00:00",
-        let schedule = "2021-05-25 00:00:00",
+        let schedule = "2021-05-25 10:00:00",
         countDown = new Date(schedule).getTime(),
         x = setInterval(function() {    
 
