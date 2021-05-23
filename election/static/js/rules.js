@@ -10,7 +10,6 @@ button.addEventListener('click', function(e){
     if(error.innerHTML != ""){
         error.style.display = 'block';
     }else{
-        // lokasi tujuan href
-        document.location.href = 'votes_now.html'
+        document.getElementById('rules').submit();
     }
 });

@@ -45,10 +45,21 @@
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <button class="btn button bg-red text-grey px-4 py-1 font-weight-bold my-3" type="submit">VOTE NOW!</button>
+        <button class="btn button bg-red text-grey px-4 py-1 font-weight-bold my-3" type="submit">
+            {% if has_suggested and session.get("accepted_terms") %}
+            <a href="{{url_for('index.vote')}}">VOTE NOW!</a>
+            {% elif has_suggested %}
+            <a href="{{url_for('index.rules')}}">VOTE NOW!</a>
+            {% else %}
+            <!-- Create popup here, "You need to suggest an EXMAN before voting." -->
+            VOTE NOW!
+            {% endif %}
+        </button>
     </div>
     <div class="d-flex justify-content-end align-items-end">
+        {% if not has_suggested %}
         <button class="btn button bg-light-green text-grey px-4 font-weight-bold mt-4 " type="submit">Suggest an EXMAN</button>
+        {% endif%}
     </div>
 </div>
 {% endblock %}

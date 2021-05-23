@@ -34,8 +34,10 @@ def get_all_candidate() -> list:
 def get_candidate(candidate_id : int) -> Candidate:
     return Candidate.query.filter_by(candidate_id = candidate_id).first()
 
-# TODO
-def get_candidate_from_NIM(NIM : str) -> Candidate:
+def insert_suggestion(name : str, division : str, suggester_id : int) -> bool:
+    pass
+
+def insert_question(subject : str, question : str, candidate_id : int, user_id : int) -> bool:
     pass
 
 # Returns the total amount of votes
@@ -73,7 +75,6 @@ def is_user_in_election_team(user_id : int) -> bool:
 
 
 # Add vote to a certain candidate, returns True on success
-# TODO, check if user has voted or not, if not, cancel vote
 def add_vote(candidate_id : int, user_id : int) -> bool:
     temp = Vote(user_id = user_id, candidate_id = candidate_id)
     vote = User.query.filter_by(user_id = user_id).first()
