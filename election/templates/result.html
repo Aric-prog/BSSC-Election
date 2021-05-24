@@ -3,6 +3,7 @@
 {% block head %}
 <title>Result</title>
 <link rel="stylesheet" href="{{url_for('static',filename='css/result.css')}}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
 {% endblock %}
 
 {% block content %}
@@ -19,8 +20,73 @@
         <p>Chairman of BSSC 12<sup>th</sup> Presidency</p>
     </div>
 
+    <h3 class="title-result">RESULT</h3>
     <div class="result">
-        <h3>RESULT</h3>
+        <div class="result-chart">
+            <div class="chart">
+                <ul class="numbers">
+                  <li><span>300</span></li>
+                  <li><span>150</span></li>
+                  <li><span>0</span></li>
+                </ul>
+                <ul class="bars">
+                    <li>
+                        <div id="bar-1" class="bar" data-percentage="150"></div>
+                        <div class="chairman-chart">
+                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
+                            Francis
+                        </div>
+                    </li>
+                    <li>
+                        <div id="bar-2" class="bar" data-percentage="225"></div>
+                            <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
+                            Ivano
+                        </div>
+                    </li>
+                    <li>
+                        <div id="bar-3" class="bar" data-percentage="75"></div>
+                            <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
+                            Kevin
+                        </div>
+                    </li>
+                </ul>
+              </div>
+        </div>
+        <div class="participant-chart">
+            <div class="participant">
+                <!-- <div class="testing"></div> -->
+                <img src="{{url_for('static',filename='assets/check.png')}}" alt="">
+                <div class="detail-each-voters">
+                    <h3>450</h3>
+                    <h5>Participant (95%)</h5>
+                </div>
+            </div>
+            <div class="missed-the-vote">
+                <img src="{{url_for('static',filename='assets/xmark.png')}}" alt="">
+                <div class="detail-each-voters">
+                    <h3>50</h3>
+                    <h5>Missed the vote (5%)</h5>
+                </div>
+            </div>
+            <div class="total-voters">
+                <img src="{{url_for('static',filename='assets/crowd.png')}}" alt="">
+                <div class="detail-each-voters">
+                    <h3>500</h3>
+                    <h5>Total voters</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function(){
+      $('.bars li .bar').each(function(key, bar){
+        var percentage = $(this).data('percentage');
+        $(this).animate({
+          'height' : (100/(300/percentage)) + '%'
+        },1000);
+      });
+    });
+</script>
 {% endblock %}
