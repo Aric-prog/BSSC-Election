@@ -25,7 +25,11 @@ def has_suggested(user_id : int) -> bool:
         return True
 
 def has_asked_question(user_id : int) -> bool:
-    pass
+    q = Question.query.filter_by(user_id = user_id).count()
+    if q == 0 :
+        return False
+    else :
+        return True
 
 # Returns the remaining vote for a user
 def vote_amount(user_id : int) -> int:
@@ -38,10 +42,24 @@ def get_candidate(candidate_id : int) -> Candidate:
     return Candidate.query.filter_by(candidate_id = candidate_id).first()
 
 def insert_suggestion(name : str, division : str, suggester_id : int) -> bool:
-    pass
+    temp = Suggestion(suggestion_name = name, suggestion_division = division, user_id = suggester_id)
+    db.session.add(temp)
+    db.session.commit()
+    q = Suggestion.query.filter_by(user_id = suggester_id).count()
+    if q == 0 :
+        return False
+    else :
+        return True
 
 def insert_question(subject : str, question : str, candidate_id : int, user_id : int) -> bool:
-    pass
+    tempq = Question(user_id = user_id , candidate_id = candidate_id, question_subject = subject, question_body = question)
+    db.session.add(tempq)
+    db.session.commit()
+    q = Question.query.filter_by(user_id = user_id).count()
+    if q == 0 :
+        return False
+    else :
+        return True
 
 # Returns the total amount of votes
 def total_votes() -> int:
@@ -66,7 +84,9 @@ def get_user_division(user_id : int) -> str:
 
 # TODO
 def get_user_position(user_id : int) -> str:
-    return "Position Example"
+    q = User.query.filter_by(user_id = user_id).first()
+    q2 = Position.query.filter_by(position_id = q.position_id).first().position_name
+    return q2
 
 def is_user_in_election_team(user_id : int) -> bool:
     q = User.query.filter_by(user_id = user_id).first()
@@ -100,5 +120,3 @@ def check_password(NIM : str, password : str) -> bool:
             return True
         else :
             return False
-
-

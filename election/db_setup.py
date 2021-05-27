@@ -42,3 +42,7 @@ db.session.add(tempU3)
 tempU4 = User(name= 'tip', NIM='230120938', POB='jkt', DOB='14 Desember 2000', email='alex@gmail.com', vote=1, password='jkt141200', position_id=q4.position_id, division_id=q1.division_id)
 db.session.add(tempU4)
 db.session.commit()
+tempq = Question(user_id = 1 , candidate_id = 1, question_subject = 'nama', question_body = 'siapa nama saya')
+db.session.add(tempq)
+db.session.commit()
+
