@@ -33,9 +33,8 @@ def index():
 def check_candidate():
     # Check the time here, give the time to frontend
     WIBTimezone = pytz.timezone('Asia/Jakarta')
-    currentDate = datetime.now(WIBTimezone)
-    electionDate = datetime(2021, 6, 10)
     # Render with timer
+    print(has_suggested(session["user_id"]))
     return render_template('votes.html', 
         username=session["username"], 
         has_suggested = has_suggested(session["user_id"]))

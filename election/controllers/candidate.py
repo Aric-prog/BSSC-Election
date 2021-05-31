@@ -26,7 +26,7 @@ def blueprint(candidate_id):
         candidate["video_link"] = candidate_ref.candidate_video
         candidate["drive_link"] = candidate_ref.candidate_blueprint
 
-        return render_template('blueprint.html', candidate = candidate)
+        return render_template('blueprint.html', candidate = candidate, has_asked = has_asked_question(session["user_id"]), candidate_id = candidate_id)
     elif(request.method == "POST"):
         # Post questions
         form = request.form

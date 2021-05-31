@@ -15,6 +15,7 @@
 
             //kalo udh mencapai ngapain
             if (distance < 0) {
+              console.log("test")
               window.location = link            
               clearInterval(x);
             }

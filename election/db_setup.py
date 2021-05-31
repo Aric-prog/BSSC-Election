@@ -1,4 +1,4 @@
-from db import db, User, Position, Division, Suggestion, Question, Vote, Candidate, init_db
+from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate, init_db
 from flask import Flask
 import os
 
