@@ -72,7 +72,7 @@ def get_vote_amount_of(candidate : Candidate) -> int:
     pass
 
 def get_all_question() -> list:
-    pass
+    return Question.query.all()
 
 def get_candidate_from(question : Question) -> Candidate:
     pass

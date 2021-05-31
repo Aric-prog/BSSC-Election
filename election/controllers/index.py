@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
-from election.db_helper import add_vote, has_suggested, has_voted, insert_suggestion
+from election.db_helper import add_vote, get_all_candidate, has_suggested, has_voted, insert_suggestion
+from election.db import Candidate
 from datetime import datetime
 import pytz
 # Pages included here: 
@@ -21,12 +22,19 @@ def index():
     WIBTimezone = pytz.timezone('Asia/Jakarta')
     currentDate = datetime.now(WIBTimezone)
     electionDate = datetime(2021, 6, 10)
+
     # parsedDate = str(datetime.now(WIBTimezone)).split('.')[0]
     print(electionDate)
+    all_candidates = get_all_candidate()
+    candidate_list = []
+    for i in all_candidates:
+        candidate_list.append(build_candidate(i))
     return render_template('home.html', 
         username=session["username"], 
         currentTime = currentDate,
-        electionDate = str(electionDate))
+        electionDate = str(electionDate),
+        candidateList = candidate_list,
+        has_suggested = has_suggested(session["user_id"]))
     
 
 @bp.route("/check_candidate")
@@ -90,3 +98,9 @@ def rules():
     elif(request.method == "POST"):
         session["accepted_terms"] = True
         return redirect(url_for("index.index"))
+
+def build_candidate(candidate_ref : Candidate) -> dict:
+    candidate = {}
+    candidate["name"] = candidate_ref.candidate_name
+    candidate["id"] = candidate_ref.candidate_id
+    return candidate
