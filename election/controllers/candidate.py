@@ -1,4 +1,4 @@
-from election.db_helper import get_candidate, insert_question
+from election.db_helper import get_all_candidate, get_all_user, get_candidate, get_vote_amount_of, has_asked_question, insert_question, most_voted_candidate, total_votes
 from flask import Blueprint, render_template, session, redirect, url_for, request
 
 # Pages included here : 
@@ -30,12 +30,37 @@ def blueprint(candidate_id):
     elif(request.method == "POST"):
         # Post questions
         form = request.form
-        insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
-        
-    return "blueprint"
+        if(not has_asked_question):
+            insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
+        return redirect(url_for('index.vote'))
 
 @bp.route("/result")
 def result():
     # Calculate the highest vote
     # Give the data to the html and js
-    return render_template('result.html')
+    voteAmount = total_votes()
+    for i in get_all_candidate():
+        print(i.candidate_name)
+    winnerCandidate = most_voted_candidate()
+    winner = {}
+    winner["name"] = winnerCandidate.candidate_name
+    
+    candidateList = []
+    candidateRefList = get_all_candidate()
+
+    userCount = len(get_all_user())
+    noVotePercentage = round(((userCount - voteAmount) / userCount) * 100)
+    votePercentage = 100 - noVotePercentage
+    for c in candidateRefList:
+        candidate = {}
+        candidate["name"] = c.candidate_name
+        candidate["votes"] = get_vote_amount_of(c)
+        candidateList.append(candidate)
+        
+    return render_template('result.html', 
+        winner=winner, 
+        candidateList = candidateList, 
+        totalVotes = voteAmount, 
+        userCount = userCount,
+        votePercentage = votePercentage,
+        noVotePercentage = noVotePercentage)

@@ -18,19 +18,27 @@ def logged_in():
 
 @bp.route("/")
 def index():
+    WIBTimezone = pytz.timezone('Asia/Jakarta')
+    currentDate = datetime.now(WIBTimezone)
+    electionDate = datetime(2021, 6, 10)
+    # parsedDate = str(datetime.now(WIBTimezone)).split('.')[0]
+    print(electionDate)
+    return render_template('home.html', 
+        username=session["username"], 
+        currentTime = currentDate,
+        electionDate = str(electionDate))
+    
+
+@bp.route("/check_candidate")
+def check_candidate():
     # Check the time here, give the time to frontend
     WIBTimezone = pytz.timezone('Asia/Jakarta')
     currentDate = datetime.now(WIBTimezone)
     electionDate = datetime(2021, 6, 10)
-    print(currentDate)
-    print(electionDate)
-    print(has_suggested(session["user_id"]))
     # Render with timer
     return render_template('votes.html', 
         username=session["username"], 
-        has_suggested = has_suggested(session["user_id"]),
-        currentTime = currentDate,
-        electionDate = electionDate)
+        has_suggested = has_suggested(session["user_id"]))
 
 @bp.route("/vote")
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])

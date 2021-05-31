@@ -16,7 +16,7 @@
     </div>
 
     <div class="congrats">
-        <h1>Budi Makmur(Nama Chairman)</h1>
+        <h1>{{ winner["name"] }}</h1>
         <p>Chairman of BSSC 12<sup>th</sup> Presidency</p>
     </div>
 
@@ -25,30 +25,33 @@
         <div class="result-chart">
             <div class="chart">
                 <ul class="numbers">
-                  <li><span>300</span></li>
-                  <li><span>150</span></li>
+                  <li><span>{{ userCount }}</span></li>
+                  <li><span>{{ userCount / 2}}</span></li>
                   <li><span>0</span></li>
                 </ul>
                 <ul class="bars">
+                    {% for c in candidateList %}
                     <li>
-                        <div id="bar-1" class="bar" data-percentage="150"></div>
+                        <!-- Percentage of vote for each participant -->
+                        <div id="bar-1" class="bar" data-percentage="{{c['votes']}}"></div>
                         <div class="chairman-chart">
-                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
-                            Francis
+                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/' + c['name'] + '.webp')}}" alt=""></div>
+                            {{ c['name'] }}
                         </div>
                     </li>
-                    <li>
-                        <div id="bar-2" class="bar" data-percentage="225"></div>
+                    {% endfor %}
+                    <!-- <li>
+                        <div id="bar-2" class="bar" data-percentage="50"></div>
                             <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
                             Ivano
                         </div>
                     </li>
                     <li>
-                        <div id="bar-3" class="bar" data-percentage="75"></div>
+                        <div id="bar-3" class="bar" data-percentage="50"></div>
                             <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
                             Kevin
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
               </div>
         </div>
@@ -57,21 +60,21 @@
                 <!-- <div class="testing"></div> -->
                 <img src="{{url_for('static',filename='assets/check.png')}}" alt="">
                 <div class="detail-each-voters">
-                    <h3>450</h3>
-                    <h5>Participant (95%)</h5>
+                    <h3>{{ totalVotes }}</h3>
+                    <h5>Participant ({{ votePercentage }}%)</h5>
                 </div>
             </div>
             <div class="missed-the-vote">
                 <img src="{{url_for('static',filename='assets/xmark.png')}}" alt="">
                 <div class="detail-each-voters">
-                    <h3>50</h3>
-                    <h5>Missed the vote (5%)</h5>
+                    <h3>{{ userCount - totalVotes }}</h3>
+                    <h5>Missed the vote ({{ noVotePercentage }}%)</h5>
                 </div>
             </div>
             <div class="total-voters">
                 <img src="{{url_for('static',filename='assets/crowd.png')}}" alt="">
                 <div class="detail-each-voters">
-                    <h3>500</h3>
+                    <h3>{{ userCount }}</h3>
                     <h5>Total voters</h5>
                 </div>
             </div>
@@ -83,8 +86,9 @@
     $(function(){
       $('.bars li .bar').each(function(key, bar){
         var percentage = $(this).data('percentage');
+        var totalVotes = {{totalVotes}}
         $(this).animate({
-          'height' : (100/(300/percentage)) + '%'
+          'height' : (100/(totalVotes/percentage)) + '%'
         },1000);
       });
     });

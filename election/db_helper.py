@@ -65,6 +65,15 @@ def insert_question(subject : str, question : str, candidate_id : int, user_id :
 def total_votes() -> int:
     return Vote.query.count()
 
+def get_candidate_nim(candidate : Candidate) -> str:
+    pass
+
+def get_vote_amount_of(candidate : Candidate) -> int:
+    pass
+
+def get_all_question() -> list:
+    pass
+
 def most_voted_candidate() -> Candidate:
     q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()
     return q1.Candidate
@@ -82,7 +91,6 @@ def get_user_division(user_id : int) -> str:
     q = Division.query.join(User, Division.division_id == User.user_id).filter_by(user_id = user_id).first()
     return  q.division_name
 
-# TODO
 def get_user_position(user_id : int) -> str:
     q = User.query.filter_by(user_id = user_id).first()
     q2 = Position.query.filter_by(position_id = q.position_id).first().position_name

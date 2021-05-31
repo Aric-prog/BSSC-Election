@@ -3,30 +3,20 @@
           minute = second * 60,
           hour = minute * 60,
           day = hour * 24;
-
-        let schedule = "2021-05-25 10:00:00",
+        let schedule = electionDay,
         countDown = new Date(schedule).getTime(),
         x = setInterval(function() {    
-
             let now = new Date().getTime(),
-                distance = countDown - now;
-
+            distance = countDown - now;
             document.getElementById("days").innerText = Math.floor(distance / (day)),
             document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
             document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
             document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
-          //kalo udh mencapai ngapain
+            //kalo udh mencapai ngapain
             if (distance < 0) {
-            let headline = document.getElementById("headline"),
-                countdown = document.getElementById("countdown"),
-                content = document.getElementById("content");
-
-            headline.innerText = "JUDULL";
-            countdown.style.display = "none";
-            content.style.display = "block";
-
-            clearInterval(x);
+              window.location = link            
+              clearInterval(x);
             }
           //seconds
         }, 0)
