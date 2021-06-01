@@ -121,20 +121,26 @@ button:hover{
     overflow: auto;
     background-color: rgb(200, 200, 200);
     background-color: rgba(200, 200, 200, 0.3);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.bg-popup:hover{
+    opacity: 1;
 }
 
 .popup{
-    width: 300px;
-    background-color: #e04632;
+    width: 350px;
     border-radius: 20px;
     overflow: auto;
     padding: 20px 30px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.popup .btn-okay{
-    border-radius: 10px;
+.popup .btn-ok{
+    border-radius: 12px;
     color: #f2f2f2;
+    text-align: center;
 }
 
 .suggest-exman{

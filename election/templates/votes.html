@@ -45,26 +45,24 @@
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <button class="btn bg-red text-grey px-4 py-1 font-weight-bold my-5" type="submit">
+        <button class="btn bg-red text-grey px-4 py-1 font-weight-bold my-5" type="submit" id="vote_now">
             {% if has_suggested and session.get("accepted_terms") %}
             <a href="{{url_for('index.vote')}}">VOTE NOW!</a>
             {% elif has_suggested %}
             <a href="{{url_for('index.rules')}}">VOTE NOW!</a>
             {% else %}
-            <!-- Create popup here, "You need to suggest an EXMAN before voting." -->
-            <div class="bg-popup">
-                <div class="popup">
-                    <div class="text">
+            <div class="bg-popup" id="popup">
+                <div class="popup bg-red">
+                    <div>
                         You need to suggest an EXMAN before voting.
                     </div>
-                    <div class="btn bg-dark-green text-grey px-5 py-1 mt-3 btn-okay" id="Okay">
+                    <div class="btn bg-dark-green px-5 py-1 mt-3 btn-ok" id="okay">
                         Okay!
                     </div>
                 </div>
             </div>
             VOTE NOW!
             {% endif %}
-            
         </button>
     </div>
     <div class="suggest-exman mt-2">
@@ -73,4 +71,8 @@
         {% endif%}
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/votes.js')}} "></script>
 {% endblock %}

@@ -17,26 +17,26 @@
             <div class="Candidates-cell">
                 <div>
                     <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>produk 1</h5>
+                    <h5 id="candidates1">produk 1</h5>
                 </div>
                 <div class="bg-button_votes bg-orange"></div>
-                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit" id="candidate1">VOTE</button>
             </div>
             <div class="Candidates-cell">
                 <div>
                     <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>produk 2</h5>
+                    <h5 id="candidates2">produk 2</h5>
                 </div>
                 <div class="bg-button_votes bg-light-green"></div>
-                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit" id="candidate2">VOTE</button>
             </div>
             <div class="Candidates-cell">
                 <div>
                     <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>produk 3</h5>
+                    <h5 id="candidates3">produk 3</h5>
                 </div>
                 <div class="bg-button_votes bg-blue"></div>
-                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit">VOTE</button>
+                <button class="btn button_votes bg-red text-grey px-5 mb-4" type="submit" id="candidate3">VOTE</button>
             </div>
         </div>
     </div>
@@ -49,4 +49,28 @@
         </div>
     </div>
 </div>
+<div class="bg-popup" id="popup">
+    <div class="popup bg-orange d-flex flex-column align-items-center">
+        <div class="text-grey h3 font-weight-bold">
+            Are You Sure?
+        </div>
+        <div class="text-grey h5" id="nama">
+        </div>
+        <div class="text-red text-center">
+            You can only vote once and you won't be able to change your vote.
+        </div>
+        <div class="d-flex w-100 justify-content-around">
+            <div class="btn bg-red text-grey px-5 py-1 mt-3 btn-ok" id="no">
+                No
+            </div>
+            <div class="btn bg-dark-green text-grey px-3 py-1 mt-3 btn-ok" id="yes">
+                Yes, I'm sure
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/votes_now.js')}} "></script>
 {% endblock %}
