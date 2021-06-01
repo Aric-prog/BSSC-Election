@@ -78,7 +78,6 @@ def get_all_question() -> list:
     return Question.query.all()
 
 def get_candidate_from(question : Question) -> Candidate:
-    
     q = db.session.query(Candidate).join(Question,Candidate.candidate_id == Question.candidate_id).filter_by(question_id = question.question_id).first()
     return q
 

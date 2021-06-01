@@ -42,7 +42,7 @@ li span {
 .Candidates-cell:nth-child(4n + 3) > .details{
     background-color: rgba(100,163,215,0.8);
 }
-.Candidates-cell:nth-child(4n) > details{
+.Candidates-cell:nth-child(4n) > .details{
     background-color: rgba(126,93,172, 0.8);
 }
 .details{

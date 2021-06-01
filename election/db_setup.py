@@ -1,4 +1,4 @@
-from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate, init_db
+from db import db, User, Position, Division, Suggestion, Question, Vote, Candidate, init_db
 from flask import Flask
 import os
 
@@ -22,11 +22,11 @@ db.session.add(tempP)
 tempP = Position(position_name='staff')
 db.session.add(tempP)
 db.session.commit()
-tempC = Candidate(candidate_name= 'cis', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
+tempC = Candidate(candidate_name= 'Ivano Ekasetia Dhojopatmo', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
 db.session.add(tempC)
-tempC2 = Candidate(candidate_name= 'no', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
+tempC2 = Candidate(candidate_name= 'Francis Alexander', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
 db.session.add(tempC2)
-tempC3 = Candidate(candidate_name= 'kev', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
+tempC3 = Candidate(candidate_name= 'Kevin Wijaya', candidate_vision='ingin resign', candidate_mission='manejadikan semua wibu', candidate_blueprint='sldkasd.com', candidate_video='lasdasd.com')
 db.session.add(tempC3)
 db.session.commit()
 q1 = Division.query.filter_by(division_name = 'IT').first()
