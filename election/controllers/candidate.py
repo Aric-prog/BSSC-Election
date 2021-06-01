@@ -39,6 +39,7 @@ def result():
     # Calculate the highest vote
     # Give the data to the html and js
     voteAmount = total_votes()
+    # print(voteAmount)
     winnerCandidate = most_voted_candidate()
     winner = {}
     winner["name"] = winnerCandidate.candidate_name
