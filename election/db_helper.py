@@ -66,16 +66,21 @@ def total_votes() -> int:
     return Vote.query.count()
 
 def get_candidate_nim(candidate : Candidate) -> str:
-    pass
+    q = db.session.query(User).filter_by(name = candidate.candidate_name).first()
+    return q.NIM
+
 
 def get_vote_amount_of(candidate : Candidate) -> int:
-    pass
+    q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).filter_by(candidate_id = candidate.candidate_id).first()
+    return q1.count
 
 def get_all_question() -> list:
     return Question.query.all()
 
 def get_candidate_from(question : Question) -> Candidate:
-    pass
+    
+    q = db.session.query(Candidate).join(Question,Candidate.candidate_id == Question.candidate_id).filter_by(question_id = question.question_id).first()
+    return q
 
 def most_voted_candidate() -> Candidate:
     q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()
