@@ -15,60 +15,42 @@
     <div class="row">
         <div class="d-flex mx-auto justify-content-center" id="merchandise1-event">
             <!-- For i in candidate list, create candidate cell -->
+            {% for i in candidateList %}
             <div class="Candidates-cell">
                 <div>
-                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>Nama 1</h5>
+                    <img src="{{url_for('static',filename='assets/profile_picture/' + i['name'] + '.jpg')}}">
+                    <h5>{{ i["name"] }}</h5>
                 </div>
-                <div class="details1">
-                    <a href="#blueprint1"><p class="more-details">Click to view more details.</p></a>
+                <div class="details">
+                    <a href="{{url_for('candidate.blueprint', candidate_id=i['id'])}}"><p class="more-details">Click to view more details.</p></a>
                 </div>
             </div>
-            <div class="Candidates-cell">
-                <div>
-                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>Nama 2</h5>
-                </div>
-                <div class="details2">
-                    <a href="#blueprint2"><p class="more-details">Click to view more details.</p></a>
-                </div>
-            </div>
-            <div class="Candidates-cell">
-                <div>
-                    <img src="{{url_for('static',filename='assets/tumbal.jpg')}}">
-                    <h5>Nama 3</h5>
-                </div>
-                <div class="details3">
-                    <a href="#blueprint3"><p class="more-details">Click to view more details.</p></a>
-                </div>
-            </div> 
+            {% endfor %}
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <button class="btn bg-red text-grey px-4 py-1 font-weight-bold my-5" type="submit" id="vote_now">
+        <button class="btn bg-red text-grey px-4 py-1 font-weight-bold my-5" type="submit">
             {% if has_suggested and session.get("accepted_terms") %}
             <a href="{{url_for('index.vote')}}">VOTE NOW!</a>
             {% elif has_suggested %}
             <a href="{{url_for('index.rules')}}">VOTE NOW!</a>
             {% else %}
-            <div class="bg-popup" id="popup">
-                <div class="popup bg-red">
-                    <div>
-                        You need to suggest an EXMAN before voting.
-                    </div>
-                    <div class="btn bg-dark-green px-5 py-1 mt-3 btn-ok" id="okay">
-                        Okay!
-                    </div>
-                </div>
-            </div>
-            VOTE NOW!
+            <div id="vote_now">VOTE NOW!</div>
             {% endif %}
         </button>
     </div>
     <div class="suggest-exman mt-2">
         {% if not has_suggested %}
-        <button type="button" class="btn btn-success">Suggest an EXMAN</button>
-        {% endif%}
+        <a href="{{url_for('index.exman_suggestion')}}" class="btn btn-success">Suggest an EXMAN</a>
+        {% endif %}
+    </div>
+    <div class="bg-popup" id="popup">
+        <div class="popup bg-red d-flex flex-column align-items-center">
+            <text class="text-white bold-text text-large text-center">You need to suggest an EXMAN before voting.</text>
+            <text class="btn bg-dark-green px-5 py-1 mt-3 btn-ok" id="okay">
+                Okay!
+            </text>
+        </div>
     </div>
 </div>
 {% endblock %}

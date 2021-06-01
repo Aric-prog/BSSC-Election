@@ -117,3 +117,8 @@ li span {
     border-color: #99b649;
     background-color: #99b649!important;
 }
+
+.wait{
+    font-size: 2.5rem;
+    font-weight: 1000;
+}
