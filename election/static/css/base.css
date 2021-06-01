@@ -74,6 +74,11 @@ header .header-right{
     right: 0;
 }
 
+a, a:hover, a:focus, a:active{
+    text-decoration: none;
+    color: inherit;
+}
+
 .profile{
     width: 12.5vw;
     font-family: 'montserratbold';
