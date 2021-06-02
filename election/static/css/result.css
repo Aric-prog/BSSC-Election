@@ -181,7 +181,6 @@ li:nth-child(4n) > .bar::before{
     color: rgba(126,93,172, 0.8);
 }
 
-
 .bar:before{
     content: attr(data-percentage);
     position: relative;

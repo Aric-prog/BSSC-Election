@@ -42,6 +42,9 @@ def result():
     # print(voteAmount)
     
     winnerCandidate = most_voted_candidate()
+    if(winnerCandidate is None):
+        return redirect(url_for('index.index'))
+    
     winner = {}
     winner["name"] = winnerCandidate.candidate_name
     
