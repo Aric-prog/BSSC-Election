@@ -1,6 +1,6 @@
 from election.db_helper import get_all_candidate, get_all_user, get_candidate, get_vote_amount_of, has_asked_question, insert_question, most_voted_candidate, total_votes
 from flask import Blueprint, render_template, session, redirect, url_for, request
-
+import math
 # Pages included here : 
 # - Blueprint page
 # - Result
@@ -40,14 +40,17 @@ def result():
     # Give the data to the html and js
     voteAmount = total_votes()
     # print(voteAmount)
+    
     winnerCandidate = most_voted_candidate()
     winner = {}
     winner["name"] = winnerCandidate.candidate_name
     
     candidateList = []
     candidateRefList = get_all_candidate()
-
+    
     userCount = len(get_all_user())
+    barCount = int(math.ceil(userCount / 100.0)) * 100
+    print(barCount)
     noVotePercentage = round(((userCount - voteAmount) / userCount) * 100)
     votePercentage = 100 - noVotePercentage
     for c in candidateRefList:
@@ -61,5 +64,6 @@ def result():
         candidateList = candidateList, 
         totalVotes = voteAmount, 
         userCount = userCount,
+        barCount = barCount,
         votePercentage = votePercentage,
         noVotePercentage = noVotePercentage)

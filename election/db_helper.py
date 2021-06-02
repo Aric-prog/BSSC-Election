@@ -72,7 +72,9 @@ def get_candidate_nim(candidate : Candidate) -> str:
 
 def get_vote_amount_of(candidate : Candidate) -> int:
     q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).filter_by(candidate_id = candidate.candidate_id).first()
-    return q1.count
+    if(q1 is not None):
+        return q1[1]
+    return 0
 
 def get_all_question() -> list:
     return Question.query.all()

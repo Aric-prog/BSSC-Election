@@ -11,7 +11,7 @@
     <h2>Congratulations!</h2>
     <div class="profile-pict">
         <div class="container-pict">
-            <img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt="">
+            <img src="{{url_for('static',filename='assets/profile_picture/' + winner['name'] + '.jpg')}}" alt="">
         </div>
     </div>
 
@@ -25,8 +25,8 @@
         <div class="result-chart">
             <div class="chart">
                 <ul class="numbers">
-                  <li><span>{{ userCount }}</span></li>
-                  <li><span>{{ userCount / 2}}</span></li>
+                  <li><span>{{ barCount }}</span></li>
+                  <li><span>{{ (barCount / 2) | int}}</span></li>
                   <li><span>0</span></li>
                 </ul>
                 <ul class="bars">
@@ -35,7 +35,7 @@
                         <!-- Percentage of vote for each participant -->
                         <div id="bar-1" class="bar" data-percentage="{{c['votes']}}"></div>
                         <div class="chairman-chart">
-                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/' + c['name'] + '.webp')}}" alt=""></div>
+                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['name'] + '.jpg')}}" alt=""></div>
                             {{ c['name'] }}
                         </div>
                     </li>
@@ -86,9 +86,8 @@
     $(function(){
       $('.bars li .bar').each(function(key, bar){
         var percentage = $(this).data('percentage');
-        var totalVotes = {{totalVotes}}
         $(this).animate({
-          'height' : (100/(totalVotes/percentage)) + '%'
+          'height' : (100/({{barCount}}/percentage)) + '%'
         },1000);
       });
     });

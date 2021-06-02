@@ -155,34 +155,34 @@
     transition: 0.5s;
 }
 
-#bar-1{
-    background: #f4b241;
+li:nth-child(4n + 1) > .bar{
+    background: rgba(244,178,65,0.8);
+}
+li:nth-child(4n + 2) > .bar{
+    background: rgba(170,203,81,0.8);
+}
+li:nth-child(4n + 3) > .bar{
+    background: rgba(100,163,215,0.8);
+}
+li:nth-child(4n) > .bar{
+    background: rgba(126,93,172, 0.8);
 }
 
-#bar-2{
-    background: #aacb51;
+li:nth-child(4n + 1) > .bar::before{
+    color: rgba(244,178,65,0.8);
+}
+li:nth-child(4n + 2) > .bar::before{
+    color: rgba(170,203,81,0.8);
+}
+li:nth-child(4n + 3) > .bar::before{
+    color: rgba(100,163,215,0.8);
+}
+li:nth-child(4n) > .bar::before{
+    color: rgba(126,93,172, 0.8);
 }
 
-#bar-3{
-    background: #7f60a6;
-}
-  
-.bars #bar-1:before{
-    color: #f4b241;
-    content: attr(data-percentage);
-    position: relative;
-    bottom: 20px;
-}
 
-.bars #bar-2:before{
-    color: #aacb51;
-    content: attr(data-percentage);
-    position: relative;
-    bottom: 20px;
-}
-
-.bars #bar-3:before{
-    color: #7f60a6;
+.bar:before{
     content: attr(data-percentage);
     position: relative;
     bottom: 20px;
