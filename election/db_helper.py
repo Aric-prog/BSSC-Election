@@ -1,5 +1,5 @@
 # Ilangin election. kalau pengen setup, balekin setelah setup
-from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
+from db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
 import os
 
 def delete():
