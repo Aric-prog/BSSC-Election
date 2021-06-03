@@ -5,13 +5,13 @@ import os
 
 
 ### Uncomment this for the setup or if you want to test ###
-# app = Flask(__name__)
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
-# db = SQLAlchemy(app)
+app = Flask(__name__)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+db = SQLAlchemy(app)
 
 # Comment this if you want to setup or test
-db = SQLAlchemy()
+# db = SQLAlchemy()
 def init_db(app):
     app = app
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

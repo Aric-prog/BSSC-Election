@@ -1,3 +1,4 @@
+# Ilangin election. kalau pengen setup, balekin setelah setup
 from election.db import db, User, Position, Division, Suggestion, Question, Vote, Candidate
 import os
 
