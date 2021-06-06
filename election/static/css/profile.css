@@ -21,10 +21,8 @@
 }
 
 .profile-photo img {
-    width: 170%;
-    height: auto;  
-    margin-top: -70%;
-    margin-left: -35%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .profile-detail{
