@@ -10,7 +10,7 @@ import pytz
 
 # TODO : Cache exman suggestion page (array containing all bssc members name)
 
-bp = Blueprint("index", __name__, url_prefix="/")
+bp = Blueprint("index", __name__, url_prefix="/election")
 
 @bp.before_request
 def logged_in():
