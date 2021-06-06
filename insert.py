@@ -49,6 +49,6 @@ db.session.commit()
 db.session.commit()
 
 
-User.query.join(Division, User.division_id == Division.division_id).filter_by(division_name = 'IT').all()
+# User.query.join(Division, User.division_id == Division.division_id).filter_by(division_name = 'IT').all()
 
-db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()
+# db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()

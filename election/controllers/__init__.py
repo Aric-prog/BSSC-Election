@@ -1,4 +1,4 @@
-from election.controllers import index, user, candidate, testing
+from election.controllers import index, user, candidate
 
 def register_all_blueprints(app):
     app.register_blueprint(candidate.bp)

@@ -5,7 +5,7 @@ import math
 # - Blueprint page
 # - Result
 
-bp = Blueprint("candidate", __name__, url_prefix="/election")
+bp = Blueprint("candidate", __name__, url_prefix="/")
 
 @bp.before_request
 def logged_in():

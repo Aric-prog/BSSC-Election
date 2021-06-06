@@ -7,7 +7,7 @@ from election.db_helper import check_password, get_all_question, get_candidate_f
 #  - Election team profile
 #  - Login
 
-bp = Blueprint("user", __name__, url_prefix="/election")
+bp = Blueprint("user", __name__, url_prefix="/")
 
 @bp.route("/login", methods=["GET","POST"])
 def login():
@@ -74,6 +74,6 @@ def build_question(question_ref : Question) -> dict:
     question = {}
     question["subject"] = question_ref.question_subject
     question["body"] = question_ref.question_body
-    # question["for_candidate"] = get_candidate_from(question_ref).candidate_name
+    question["for_candidate"] = get_candidate_from(question_ref).candidate_name
 
     return question

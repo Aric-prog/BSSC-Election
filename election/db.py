@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 
-
 ### Uncomment this for the setup or if you want to test ###
 # app = Flask(__name__)
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
