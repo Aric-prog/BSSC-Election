@@ -99,7 +99,7 @@ def get_user_from_NIM(NIM : str) -> User:
     return User.query.filter_by(NIM = NIM).first()
 
 def get_user_division(user_id : int) -> str:
-    q = Division.query.join(User, Division.division_id == User.user_id).filter_by(user_id = user_id).first()
+    q = Division.query.join(User, Division.division_id == User.division_id).filter_by(user_id = user_id).first()
     return  q.division_name
 
 def get_user_position(user_id : int) -> str:
