@@ -30,7 +30,7 @@
                         <text class="py-2 bold-text">Hello, {{session.get("username").split()[0]}}</text>
                         <divider></divider>
                         <a href="{{url_for('user.profile')}}" class="d-flex flex-row p-3" id="profile-button">
-                            <img src="{{url_for('static',filename='assets/' + session.get('imagepath'))}}" class="icon mr-3">
+                            <img src="{{url_for('static', filename='assets/portrait.png')}}" class="icon mr-3">
                             <text>Account Info</text>
                         </a>
                         <a href="{{url_for('user.logout')}}" class="bg-red px-2 py-1 rounded" id="logout-button">
@@ -51,9 +51,9 @@
             <text>© IT DIVISION — BSSC 11<sup>th</sup> Presidency</text> 
         </footer>
     </div>    
-    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}} "></script>
-    <script src="{{url_for('static', filename='js/base.js')}}"></script>
-    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}} "></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/base.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
     {% block script %}{% endblock %}
 </body>
 </html>
