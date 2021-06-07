@@ -21,7 +21,7 @@ def logged_in():
 def index():
     WIBTimezone = pytz.timezone('Asia/Jakarta')
     currentDate = datetime.now(WIBTimezone)
-    electionDate = datetime(2021, 6, 10)
+    electionDate = datetime(2021, 6, 6)
     
     # parsedDate = str(datetime.now(WIBTimezone)).split('.')[0]
     print(electionDate)
