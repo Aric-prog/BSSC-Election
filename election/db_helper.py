@@ -19,7 +19,7 @@ def has_voted(user_id : int) -> bool:
         return False
 
 def has_suggested(user_id : int) -> bool:
-    q = Suggestion.query.join(User, Suggestion.user_id == User.user_id).filter_by(user_id = 1).count()
+    q = Suggestion.query.join(User, Suggestion.user_id == User.user_id).filter_by(user_id = user_id).count()
     if q == 0 :
         return False
     else :
