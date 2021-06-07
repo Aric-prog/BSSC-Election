@@ -110,6 +110,7 @@ def build_candidate(candidate_ref : Candidate) -> dict:
     candidate = {}
     candidate["name"] = candidate_ref.candidate_name
     candidate["id"] = candidate_ref.candidate_id
+    candidate["imagepath"] = candidate_ref.candidate_name.replace(' ','-') + '.webp'
     return candidate
 
 def get_all_candidate_info() -> list:

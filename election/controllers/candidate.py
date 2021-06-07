@@ -21,6 +21,7 @@ def blueprint(candidate_id):
         candidate_ref = get_candidate(candidate_id)
 
         candidate["name"] = candidate_ref.candidate_name
+        candidate["imagepath"] = candidate_ref.candidate_name.replace(' ','-') + '.webp'
         candidate["vision"] = candidate_ref.candidate_vision
         candidate["mission"] = candidate_ref.candidate_mission
         candidate["video_link"] = candidate_ref.candidate_video

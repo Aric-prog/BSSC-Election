@@ -17,7 +17,7 @@
             {% for i in candidateList %}
             <div class="Candidates-cell">
                 <div>
-                    <img src="{{url_for('static',filename='assets/profile_picture/' + i['name'] + '.jpg')}}">
+                    <img src="{{url_for('static',filename='assets/profile_picture/' + i['imagepath'])}}">
                     <h5 id="candidate-name-{{i['id']}}">{{i["name"]}}</h5>
                 </div>
                 <div class="bg-button_votes details"></div>
