@@ -32,6 +32,7 @@ def login():
             session["logged_in"] = True
             session["username"] = user_ref.name
             session["user_id"] = user_ref.user_id
+            session["imagepath"] = user_ref.name.replace(' ','-') + '.jpg'
             session["accepted_terms"] = None
             
             return redirect(url_for("index.index"))
