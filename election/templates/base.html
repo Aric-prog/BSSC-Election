@@ -25,12 +25,12 @@
             </text>
             <div class="header-right position-absolute d-flex flex-row-reverse h-100">
                 <div class="profile position-relative d-flex flex-column justify-content-start h-100">
-                    <img src="{{url_for('static',filename='assets/' + session.get('username')+ '.jpg')}}" class="p-2" id="portrait" onclick="showModal()">
+                    <img src="{{url_for('static',filename='assets/' + session.get('username') + '.jpg') | replace(' ','-')}}" class="p-2" id="portrait" onclick="showModal()">
                     <div class="bg-purple logout position-relative text-white flex-column align-items-center" id="logout-modal">
                         <text class="py-2 bold-text">Hello, {{session.get("username").split()[0]}}</text>
                         <divider></divider>
                         <a href="{{url_for('user.profile')}}" class="d-flex flex-row p-3" id="profile-button">
-                            <img src="{{url_for('static', filename='assets/portrait.png')}}" class="icon mr-3">
+                            <img src="{{url_for('static',filename='assets/' + session.get('username') + '.jpg') | replace(' ','-')}}" class="icon mr-3">
                             <text>Account Info</text>
                         </a>
                         <a href="{{url_for('user.logout')}}" class="bg-red px-2 py-1 rounded" id="logout-button">
