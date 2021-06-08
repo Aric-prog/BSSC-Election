@@ -54,7 +54,9 @@ def check_candidate():
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id = 0):
     if(request.method == "GET"):
-        if(has_suggested(session["user_id"])):
+        if(has_suggested(session["user_id"]) and has_voted(session["user_id"])):
+            return redirect(url_for('index.index'))
+        elif(has_suggested(session["user_id"])):
             candidate_list = get_all_candidate_info()
             if(session["accepted_terms"] is None):
                 return redirect(url_for('index.rules'))
