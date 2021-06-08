@@ -16,10 +16,8 @@
         <div class="d-flex mx-auto justify-content-center">
             {% for i in candidateList %}
             <div class="Candidates-cell">
-                <div>
-                    <img src="{{url_for('static',filename='assets/profile_picture/' + i['imagepath'])}}">
-                    <h5 id="candidate-name-{{i['id']}}">{{i["name"]}}</h5>
-                </div>
+                <img src="{{url_for('static',filename='assets/profile_picture/' + i['imagepath'])}}">
+                <h5 id="candidate-name-{{i['id']}}">{{i["name"]}}</h5>
                 <div class="bg-button_votes details"></div>
                 <button class="btn button_votes bg-red text-grey px-5 mb-4" id="candidate-{{i['id']}}" onclick="setCandidate(this.id)">VOTE</button>
             </div>
