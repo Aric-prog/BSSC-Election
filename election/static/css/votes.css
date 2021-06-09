@@ -92,9 +92,8 @@ button:hover{
 .Candidates-cell h5{
     overflow: hidden;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 10px;
     font-weight: bold;
-    max-height: 2.4em;
     color: #64A3D7;
 }
 
