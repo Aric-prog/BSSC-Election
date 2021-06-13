@@ -50,8 +50,11 @@ def logout():
 def profile():
     user = build_user_dict_from(get_user(session["user_id"]))
     questionList = []
-    if(is_user_in_election_team(session["user_id"])):
+    print(is_user_in_election_team(session["username"]))
+
+    if(is_user_in_election_team(session["username"])):
         all_questions = get_all_question()
+        print(all_questions)
         for i in all_questions:
             questionList.append(build_question(i))
         return render_template('profile.html', user = user, vote_left = vote_amount(session["user_id"]), question_list = questionList)

@@ -107,13 +107,10 @@ def get_user_position(user_id : int) -> str:
     q2 = Position.query.filter_by(position_id = q.position_id).first().position_name
     return q2
 
-def is_user_in_election_team(user_id : int) -> bool:
-    q = User.query.filter_by(user_id = user_id).first()
-    if q.name == 'Election Team' :
+def is_user_in_election_team(username : str) -> bool:
+    if(username == 'Election Team'):
         return True
-    else :
-        return False
-
+    return False
 
 # Add vote to a certain candidate, returns True on success
 def add_vote(candidate_id : int, user_id : int) -> bool:

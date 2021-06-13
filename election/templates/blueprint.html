@@ -49,6 +49,7 @@
         </a>
     </div>
 
+    {% if not has_asked %}
     <div class="question-for-chairman">
         <div class="question-title">
             <img src="{{url_for('static',filename='assets/mail.png')}}" alt="">
@@ -57,7 +58,6 @@
                 <h2>{{ candidate["name"] }}</h2>
             </div>
         </div>
-        {% if not has_asked %}
         <form action="{{url_for('candidate.blueprint', candidate_id = candidate_id)}}" method="POST">
             <div class="row">
                 <div class="col-25">
@@ -86,11 +86,11 @@
             </div>
 
             <div class="row-button">
-                <input class="submit-btn" type="button" value="Submit" id="submitBtn" onclick="isValidate()">
+                <input class="submit-btn" type="submit" value="Submit" id="submitBtn" onclick="isValidate()">
             </div>
         </form>
-        {% endif %}
     </div>
+    {% endif %}
 
     <div id="modal" class="notification-container">
         <div class="notification">
