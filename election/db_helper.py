@@ -109,8 +109,7 @@ def get_user_position(user_id : int) -> str:
 
 def is_user_in_election_team(user_id : int) -> bool:
     q = User.query.filter_by(user_id = user_id).first()
-    #tunggu masukin data
-    if q.position_id == 1 :
+    if q.name == 'Election Team' :
         return True
     else :
         return False
