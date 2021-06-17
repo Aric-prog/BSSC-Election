@@ -9,7 +9,6 @@ import pytz
 # - Rules
 
 # TODO : Cache exman suggestion page (array containing all bssc members name)
-
 bp = Blueprint("index", __name__, url_prefix="/")
 
 @bp.before_request
@@ -96,7 +95,7 @@ def exman_suggestion():
                 insert_suggestion(form["exman-name-1"], form["exman-division-1"], session["user_id"])
                 insert_suggestion(form["exman-name-2"], form["exman-division-2"], session["user_id"])
                 insert_suggestion(form["exman-name-3"], form["exman-division-3"], session["user_id"])
-                return redirect(url_for("index.index"))
+                return redirect(url_for("index.vote"))
             else:
                 flash("Please fill all fields")
 

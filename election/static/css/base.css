@@ -84,6 +84,7 @@ a, a:hover, a:focus, a:active{
     font-family: 'montserratbold';
 }
 #portrait{
+    height: 80px;
     width: 80px;
     object-fit: cover;
     border-radius: 50%;
