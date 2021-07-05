@@ -23,7 +23,6 @@ def index():
     electionDate = datetime(2021, 6, 6)
     
     # parsedDate = str(datetime.now(WIBTimezone)).split('.')[0]
-    print(electionDate)
     candidate_list = get_all_candidate_info()
 
     if(has_voted(session["user_id"])):
@@ -53,7 +52,7 @@ def check_candidate():
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
 def vote(candidate_id = 0):
     if(request.method == "GET"):
-        if(has_suggested(session["user_id"]) and has_voted(session["user_id"])):
+        if(has_voted(session["user_id"])):
             return redirect(url_for('index.index'))
         elif(has_suggested(session["user_id"])):
             candidate_list = get_all_candidate_info()
@@ -91,13 +90,13 @@ def exman_suggestion():
         else:
         # Insert suggestion into db
             form = request.form
-            if(len(form) == 6):
-                insert_suggestion(form["exman-name-1"], form["exman-division-1"], session["user_id"])
-                insert_suggestion(form["exman-name-2"], form["exman-division-2"], session["user_id"])
-                insert_suggestion(form["exman-name-3"], form["exman-division-3"], session["user_id"])
-                return redirect(url_for("index.vote"))
-            else:
-                flash("Please fill all fields")
+            for i in range(len(form) // 2):
+                iteration = str(i + 1)
+                print(bool(form["exman-name-" + iteration]))
+                if(form["exman-name-" + iteration] and form["exman-division-" + iteration]):
+                    insert_suggestion(form["exman-name-" + iteration], form["exman-division-" + iteration], session["user_id"])
+                
+            return redirect(url_for("index.vote"))
 
 @bp.route("/rules", methods=["GET","POST"])
 def rules():
