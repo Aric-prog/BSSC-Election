@@ -8,10 +8,11 @@
 
 {% block content %}
 <div class="result-page">
+    {% if aboveSixtySixPercentage %}
     <h2>Congratulations!</h2>
     <div class="profile-pict">
         <div class="container-pict">
-            <img src="{{url_for('static',filename='assets/profile_picture/' + winner['name'] + '.jpg')}}" alt="">
+            <img src="{{url_for('static',filename='assets/profile_picture/' + winner['imagepath'] + '.webp')}}" alt="">
         </div>
     </div>
 
@@ -19,7 +20,7 @@
         <h1>{{ winner["name"] }}</h1>
         <p>Chairman of BSSC 12<sup>th</sup> Presidency</p>
     </div>
-
+    {% endif %}
     <h3 class="title-result">RESULT</h3>
     <div class="result">
         <div class="result-chart">
@@ -35,7 +36,7 @@
                         <!-- Percentage of vote for each participant -->
                         <div id="bar-1" class="bar" data-percentage="{{c['votes']}}"></div>
                         <div class="chairman-chart">
-                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['name'] + '.jpg')}}" alt=""></div>
+                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['name'] + '.webp')}}" alt=""></div>
                             {{ c['name'] }}
                         </div>
                     </li>

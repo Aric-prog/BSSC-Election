@@ -54,14 +54,12 @@ def vote(candidate_id = 0):
     if(request.method == "GET"):
         if(has_voted(session["user_id"])):
             return redirect(url_for('index.index'))
-        elif(has_suggested(session["user_id"])):
+        else:
             candidate_list = get_all_candidate_info()
             if(session["accepted_terms"] is None):
                 return redirect(url_for('index.rules'))
             else:
                 return render_template('votes_now.html', candidateList = candidate_list)
-        else:
-            return redirect(url_for('index.check_candidate'))
     elif(request.method == "POST"):
         if(not candidate_id):
             return (url_for("index.vote"))

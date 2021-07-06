@@ -12,7 +12,7 @@ def reinit():
 
 reinit()
 
-tempD = Division(division_name = 'Public Reaction')
+tempD = Division(division_name = 'Public Relation')
 db.session.add(tempD)
 tempD = Division(division_name = 'Culture')
 db.session.add(tempD)
@@ -61,7 +61,7 @@ db.session.add(tempC3)
 # db.session.add(tempV)
 # db.session.commit()
 
-
+tempU0 = User(name= 'Election Team', NIM='00000000', POB='-', DOB='-', email='-', vote=1, password='electionteam2021', position_id=2, division_id=8)
 tempU70 = User(name= 'Tiffany Ciangsawira', NIM='2301860444', POB='Jakarta', DOB='23 Maret 2001', email='gracia.tiffany@gmail.com', vote=1, password='jakarta23032001', position_id=3, division_id=8)
 tempU71 = User(name= 'Aditya', NIM='2301914270', POB='Gorontalo', DOB='3 Juni 2001', email='adityasaroinsong@gmail.com', vote=1, password='gorontalo03062001', position_id=2, division_id=8)
 tempU72 = User(name= 'Alexander Dennis Suwardi', NIM='2301862853', POB='Jakarta', DOB='14 Desember 2000', email='swrddennis@gmail.com', vote=1, password='jakarta14122000', position_id=2, division_id=8)
@@ -72,6 +72,7 @@ tempU76 = User(name= 'Christian Michael Putra Mandala', NIM='2440020442', POB='P
 tempU77 = User(name= 'Francis Alexander', NIM='2440062161', POB='Surabaya', DOB='22 Agustus 2002', email='francisalexander02@gmail.com', vote=1, password='surabaya22082002', position_id=1, division_id=8)
 tempU78 = User(name= 'Kevin Wijaya', NIM='2440020921', POB='Samarinda', DOB='2 Oktober 2002', email='kevinwijaya572@gmail.com', vote=1, password='samarinda2102002', position_id=1, division_id=8)
 tempU200 = User(name= 'Election Team', NIM='0000000000', POB='-', DOB='-', email='-', vote=0, password='electionteam2021', position_id=2, division_id=8)
+db.session.add(tempU0)
 db.session.add(tempU70)
 db.session.add(tempU71)
 db.session.add(tempU72)

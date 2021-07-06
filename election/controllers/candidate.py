@@ -40,34 +40,43 @@ def result():
     # Calculate the highest vote
     # Give the data to the html and js
     voteAmount = total_votes()
-    # print(voteAmount)
-    
-    winnerCandidate = most_voted_candidate()
-    if(winnerCandidate is None):
-        return redirect(url_for('index.index'))
-    
-    winner = {}
-    winner["name"] = winnerCandidate.candidate_name
-    
-    candidateList = []
-    candidateRefList = get_all_candidate()
-    
-    userCount = len(get_all_user())
-    barCount = int(math.ceil(userCount / 100.0)) * 100
-    print(barCount)
-    noVotePercentage = round(((userCount - voteAmount) / userCount) * 100)
-    votePercentage = 100 - noVotePercentage
-    for c in candidateRefList:
-        candidate = {}
-        candidate["name"] = c.candidate_name
-        candidate["votes"] = get_vote_amount_of(c)
-        candidateList.append(candidate)
+    if(voteAmount > 0):
+        winnerCandidate = most_voted_candidate()
         
-    return render_template('result.html', 
-        winner=winner, 
-        candidateList = candidateList, 
-        totalVotes = voteAmount, 
-        userCount = userCount,
-        barCount = barCount,
-        votePercentage = votePercentage,
-        noVotePercentage = noVotePercentage)
+        winner = {}
+        winner["name"] = winnerCandidate.candidate_name
+        winner["imagepath"] = winnerCandidate.candidate_name.replace(" ", "_")
+        
+        candidateList = []
+        candidateRefList = get_all_candidate()
+        
+        userCount = len(get_all_user())
+        barCount = int(math.ceil(userCount / 100.0)) * 100
+        
+        noVotePercentage = round(((userCount - voteAmount) / userCount) * 100)
+        votePercentage = 100 - noVotePercentage
+        
+        prevHighestVote = 0
+        for c in candidateRefList:
+            candidate = {}
+            candidate["name"] = c.candidate_name
+            candidate["votes"] = get_vote_amount_of(c)
+            if(candidate["votes"] > prevHighestVote):
+                prevHighestVote = candidate["votes"]
+            candidateList.append(candidate)
+        
+        aboveSixtySixPercent = False
+        if(int((prevHighestVote / userCount) * 100) >= 66):
+            aboveSixtySixPercent = True
+
+        return render_template('result.html', 
+            winner=winner, 
+            candidateList = candidateList, 
+            totalVotes = voteAmount, 
+            userCount = userCount,
+            barCount = barCount,
+            votePercentage = votePercentage,
+            noVotePercentage = noVotePercentage,
+            aboveSixtySixPercent = aboveSixtySixPercent)
+    else:
+        return redirect(url_for('index.index'))
