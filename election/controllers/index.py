@@ -102,7 +102,7 @@ def rules():
         return render_template('rules.html')
     elif(request.method == "POST"):
         session["accepted_terms"] = True
-        return redirect(url_for("index.index"))
+        return redirect(url_for("index.vote"))
 
 def build_candidate(candidate_ref : Candidate) -> dict:
     candidate = {}
