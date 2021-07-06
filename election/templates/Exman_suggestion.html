@@ -8,7 +8,7 @@
 {% block content %}
 <div class="d-flex flex-column w-75 mx-auto ">
     <div class="text-purple h1 my-5 font-weight-bold text-center">
-        EXMAN Suggestion
+        Personal Suggestion
     </div>
     <form action="{{url_for('index.exman_suggestion')}}" method="POST">
         <!-- bisa dirapikan soalnya bentunya sama cuman beda 1, 2, 3-->
@@ -22,24 +22,28 @@
                         <text>Name</text>
                     </div>
                     <div class="col-10">
-                        <input class="input_EXman w-100 pl-2" name="exman-name-1" id="exman-name-1" type="text" placeholder="Budi Kuncoroo">
+                        <input class="input_EXman w-100 pl-2" name="exman-name-1" id="exman-name-1" type="text" placeholder="Suggest a BSSC member">
                     </div>
                 </div>
                 <div class="row text-purple mb-1">
                     <div class="col-2 font-weight-bold">
-                        <text>Division</text>
+                        <text>Role</text>
                     </div>
                     <div class="col-10">
                         <select class="input_EXman w-100 pl-2" name="exman-division-1" id="exman-division-1">
-                            <option value="" disabled selected hidden>-- Choose a division that fits the candidate --</option>
-                            <option value="it" >Informations and Technology Division</option>
-                            <option value="cm" >CREATIVE MEDIA Division</option>
-                            <option value="art" >ART Division</option>
-                            <option value="social" >SOCIAL Division</option>
-                            <option value="sport" >SPORT Division</option>
-                            <option value="hrd" >Human Resources and Development Division</option>
-                            <option value="culture" >CULTURE Division</option>
-                            <option value="pr" >PUBLIC RELATION Division</option>
+                            <option value="" disabled selected hidden>-- Choose a role that fits the candidate --</option>
+                            <option value="IT Manager" >Manager of Informations and Technology Division</option>
+                            <option value="CM Manager" >Manager of Creative Media Division</option>
+                            <option value="Art Manager" >Manager of Art Division</option>
+                            <option value="Social Manager" >Manager of Social Division</option>
+                            <option value="Sport Manager" >Manager of Sport Division</option>
+                            <option value="HRD Manager" >Manager of Human Resources and Development Division</option>
+                            <option value="Culture Manager" >Manager of Culture Division</option>
+                            <option value="PR Manager" >Manager of Manager of Public Relation Division</option>
+                            <option value="Event and Marketing EXCOM" >Vice Chairman of Event and Marketing</option>
+                            <option value="Legal and Human Resource EXCOM" >Vice Chairman of Legal and Human Resource</option>
+                            <option value="Operation EXCOM" >Vice Chairman of Operation</option>
+                            <option value="Finance EXCOM" >Vice Chairman of Finance</option>
                         </select>
                     </div>
                 </div>
@@ -55,24 +59,28 @@
                         <text>Name</text>
                     </div>
                     <div class="col-10">
-                        <input class="input_EXman w-100 pl-2" name="exman-name-2" id="exman-name-2" type="text" placeholder="Suggest an EXMAN">
+                        <input class="input_EXman w-100 pl-2" name="exman-name-2" id="exman-name-2" type="text" placeholder="Suggest a BSSC member">
                     </div>
                 </div>
                 <div class="row text-purple mb-1">
                     <div class="col-2 font-weight-bold">
-                        <text>Division</text>
+                        <text>Role</text>
                     </div>
                     <div class="col-10">
-                        <select class="input_EXman w-100 pl-2" name="exman-division-2" id="exman-division-2">
-                            <option value="" disabled selected hidden>-- Choose a division that fits the candidate --</option>
-                            <option value="it" >Informations and Technology Division</option>
-                            <option value="cm" >CREATIVE MEDIA Division</option>
-                            <option value="art" >ART Division</option>
-                            <option value="social" >SOCIAL Division</option>
-                            <option value="sport" >SPORT Division</option>
-                            <option value="hrd" >Human Resources and Development Division</option>
-                            <option value="culture" >CULTURE Division</option>
-                            <option value="pr" >PUBLIC RELATION Division</option>
+                        <select class="input_EXman w-100 pl-2" name="exman-division-1" id="exman-division-1">
+                            <option value="" disabled selected hidden>-- Choose a role that fits the candidate --</option>
+                            <option value="IT Manager" >Manager of Informations and Technology Division</option>
+                            <option value="CM Manager" >Manager of Creative Media Division</option>
+                            <option value="Art Manager" >Manager of Art Division</option>
+                            <option value="Social Manager" >Manager of Social Division</option>
+                            <option value="Sport Manager" >Manager of Sport Division</option>
+                            <option value="HRD Manager" >Manager of Human Resources and Development Division</option>
+                            <option value="Culture Manager" >Manager of Culture Division</option>
+                            <option value="PR Manager" >Manager of Manager of Public Relation Division</option>
+                            <option value="Event and Marketing EXCOM" >Vice Chairman of Event and Marketing</option>
+                            <option value="Legal and Human Resource EXCOM" >Vice Chairman of Legal and Human Resource</option>
+                            <option value="Operation EXCOM" >Vice Chairman of Operation</option>
+                            <option value="Finance EXCOM" >Vice Chairman of Finance</option>
                         </select>
                     </div>
                 </div>
@@ -88,24 +96,28 @@
                         <text>Name</text>
                     </div>
                     <div class="col-10">
-                        <input class="input_EXman w-100 pl-2" name="exman-name-3" id="exman-name-3" type="text" placeholder="Suggest an EXMAN">
+                        <input class="input_EXman w-100 pl-2" name="exman-name-3" id="exman-name-3" type="text" placeholder="Suggest a BSSC member">
                     </div>
                 </div>
                 <div class="row text-purple mb-1">
                     <div class="col-2 font-weight-bold">
-                        <text>Division</text>
+                        <text>Role</text>
                     </div>
                     <div class="col-10">
-                        <select class="input_EXman w-100 pl-2" name="exman-division-3" id="exman-division-3">
-                            <option value="" disabled selected hidden>-- Choose a division that fits the candidate --</option>
-                            <option value="it" >Informations and Technology Division</option>
-                            <option value="cm" >CREATIVE MEDIA Division</option>
-                            <option value="art" >ART Division</option>
-                            <option value="social" >SOCIAL Division</option>
-                            <option value="sport" >SPORT Division</option>
-                            <option value="hrd" >Human Resources and Development Division</option>
-                            <option value="culture" >CULTURE Division</option>
-                            <option value="pr" >PUBLIC RELATION Division</option>
+                        <select class="input_EXman w-100 pl-2" name="exman-division-1" id="exman-division-1">
+                            <option value="" disabled selected hidden>-- Choose a role that fits the candidate --</option>
+                            <option value="IT Manager" >Manager of Informations and Technology Division</option>
+                            <option value="CM Manager" >Manager of Creative Media Division</option>
+                            <option value="Art Manager" >Manager of Art Division</option>
+                            <option value="Social Manager" >Manager of Social Division</option>
+                            <option value="Sport Manager" >Manager of Sport Division</option>
+                            <option value="HRD Manager" >Manager of Human Resources and Development Division</option>
+                            <option value="Culture Manager" >Manager of Culture Division</option>
+                            <option value="PR Manager" >Manager of Manager of Public Relation Division</option>
+                            <option value="Event and Marketing EXCOM" >Vice Chairman of Event and Marketing</option>
+                            <option value="Legal and Human Resource EXCOM" >Vice Chairman of Legal and Human Resource</option>
+                            <option value="Operation EXCOM" >Vice Chairman of Operation</option>
+                            <option value="Finance EXCOM" >Vice Chairman of Finance</option>
                         </select>
                     </div>
                 </div>

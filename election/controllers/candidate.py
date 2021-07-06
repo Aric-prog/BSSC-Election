@@ -31,8 +31,7 @@ def blueprint(candidate_id):
     elif(request.method == "POST"):
         # Post questions
         form = request.form
-        if(not has_asked_question(session["user_id"])):
-            insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
+        insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
         return redirect(url_for('candidate.blueprint', candidate_id=candidate_id))
 
 @bp.route("/result")
