@@ -36,23 +36,11 @@
                         <!-- Percentage of vote for each participant -->
                         <div id="bar-1" class="bar" data-percentage="{{c['votes']}}"></div>
                         <div class="chairman-chart">
-                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['name'] + '.webp')}}" alt=""></div>
+                            <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['imagepath'] + '.webp')}}" alt=""></div>
                             {{ c['name'] }}
                         </div>
                     </li>
                     {% endfor %}
-                    <!-- <li>
-                        <div id="bar-2" class="bar" data-percentage="50"></div>
-                            <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
-                            Ivano
-                        </div>
-                    </li>
-                    <li>
-                        <div id="bar-3" class="bar" data-percentage="50"></div>
-                            <div class="chairman-chart"><div class="container-pict2"><img src="{{url_for('static',filename='assets/tumbal.jpg')}}" alt=""></div>
-                            Kevin
-                        </div>
-                    </li> -->
                 </ul>
               </div>
         </div>

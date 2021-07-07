@@ -1,6 +1,8 @@
+from election.controllers.candidate import result
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
 from election.db_helper import add_vote, get_all_candidate, has_suggested, has_voted, insert_suggestion
 from election.db import Candidate
+from election.datetime_handler import get_current_time, get_election_date, result_available
 from datetime import datetime
 import pytz
 # Pages included here: 
@@ -18,30 +20,26 @@ def logged_in():
 
 @bp.route("/")
 def index():
-    WIBTimezone = pytz.timezone('Asia/Jakarta')
-    currentDate = datetime.now(WIBTimezone)
-    electionDate = datetime(2021, 6, 6)
-    
-    # parsedDate = str(datetime.now(WIBTimezone)).split('.')[0]
     candidate_list = get_all_candidate_info()
-
+    resultAvailable = result_available()
     if(has_voted(session["user_id"])):
-        return render_template('home.html', 
-        candidateList = candidate_list, 
-        electionDate = "",
-        has_suggested = has_suggested(session["user_id"]))
+        return render_template('home.html',
+        candidateList = candidate_list,
+        electionDate = False,
+        has_suggested = has_suggested(session["user_id"]),
+        resultAvailable = resultAvailable)
     
     return render_template('home.html',  
-        currentTime = currentDate,
-        electionDate = str(electionDate),
+        currentTime = get_current_time(),
+        electionDate = get_election_date(),
         candidateList = candidate_list,
-        has_suggested = has_suggested(session["user_id"]))
+        has_suggested = has_suggested(session["user_id"]),
+        resultAvailable = resultAvailable)
     
 
 @bp.route("/check_candidate")
 def check_candidate():
     # Check the time here, give the time to frontend
-    WIBTimezone = pytz.timezone('Asia/Jakarta')
     candidate_list = get_all_candidate_info()
     return render_template('votes.html', 
         username=session["username"], 
@@ -86,15 +84,15 @@ def exman_suggestion():
         if(suggested):
             return redirect(url_for("index.index"))
         else:
-        # Insert suggestion into db
+            # Insert suggestion into db
             form = request.form
+            print(form)
             for i in range(len(form) // 2):
                 iteration = str(i + 1)
-                print(bool(form["exman-name-" + iteration]))
-                if(form["exman-name-" + iteration] and form["exman-division-" + iteration]):
+                if(form.get("exman-name-" + iteration) and form.get("exman-division-" + iteration)):
                     insert_suggestion(form["exman-name-" + iteration], form["exman-division-" + iteration], session["user_id"])
                 
-            return redirect(url_for("index.vote"))
+            return redirect(url_for("index.index"))
 
 @bp.route("/rules", methods=["GET","POST"])
 def rules():

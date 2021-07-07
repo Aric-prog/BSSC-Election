@@ -1,3 +1,4 @@
+from election.datetime_handler import result_available
 from election.db_helper import get_all_candidate, get_all_user, get_candidate, get_vote_amount_of, has_asked_question, insert_question, most_voted_candidate, total_votes
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import math
@@ -31,7 +32,8 @@ def blueprint(candidate_id):
     elif(request.method == "POST"):
         # Post questions
         form = request.form
-        insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
+        if(form.get("subject")):
+            insert_question(form["subject"], form["question"], candidate_id, session["user_id"])
         return redirect(url_for('candidate.blueprint', candidate_id=candidate_id))
 
 @bp.route("/result")
@@ -39,7 +41,7 @@ def result():
     # Calculate the highest vote
     # Give the data to the html and js
     voteAmount = total_votes()
-    if(voteAmount > 0):
+    if(voteAmount > 0 and result_available()):
         winnerCandidate = most_voted_candidate()
         
         winner = {}
@@ -59,12 +61,14 @@ def result():
         for c in candidateRefList:
             candidate = {}
             candidate["name"] = c.candidate_name
+            candidate["imagepath"] = c.candidate_name.replace(" ", "_")
             candidate["votes"] = get_vote_amount_of(c)
             if(candidate["votes"] > prevHighestVote):
                 prevHighestVote = candidate["votes"]
             candidateList.append(candidate)
         
         aboveSixtySixPercent = False
+        print(int((prevHighestVote / userCount) * 100))
         if(int((prevHighestVote / userCount) * 100) >= 66):
             aboveSixtySixPercent = True
 

@@ -14,7 +14,6 @@
     </div>
     <div class="row">
         <div class="d-flex mx-auto justify-content-center" id="merchandise1-event">
-            <!-- For i in candidate list, create candidate cell -->
             {% for i in candidateList %}
             <div class="Candidates-cell">
                 <img src="{{url_for('static',filename='assets/profile_picture/' + i['imagepath'])}}">
