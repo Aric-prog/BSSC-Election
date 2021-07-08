@@ -1,4 +1,3 @@
-from election.controllers.candidate import result
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
 from election.db_helper import add_vote, get_all_candidate, has_suggested, has_voted, insert_suggestion
 from election.db import Candidate
