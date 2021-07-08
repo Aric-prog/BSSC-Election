@@ -61,7 +61,7 @@ def result():
         for c in candidateRefList:
             candidate = {}
             candidate["name"] = c.candidate_name
-            candidate["imagepath"] = c.candidate_name.replace(" ", "_")
+            candidate["imagepath"] = c.candidate_name.replace(" ", "-")
             candidate["votes"] = get_vote_amount_of(c)
             if(candidate["votes"] > prevHighestVote):
                 prevHighestVote = candidate["votes"]

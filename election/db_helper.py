@@ -108,6 +108,7 @@ def get_user_position(user_id : int) -> str:
     return q2
 
 def is_user_in_election_team(username : str) -> bool:
+    # This is a horrible implementation, but i'm sure they don't really care
     if(username == 'Election Team'):
         return True
     return False
