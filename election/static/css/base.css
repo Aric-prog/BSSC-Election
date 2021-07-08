@@ -124,6 +124,7 @@ text{
 .icon{
     border-radius: 0px;
     width: 20px;
+    height: 20px;
     object-fit: cover;
 }
 .modal-option{
