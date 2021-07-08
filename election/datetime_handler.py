@@ -6,7 +6,7 @@ WIBTimezone = pytz.timezone('Asia/Jakarta')
 # Change this in accordance with time to vote and show result
 RESULT_YEAR = 2021
 RESULT_MONTH = 7
-RESULT_DAY = 7
+RESULT_DAY = 10
 RESULT_TIME = WIBTimezone.localize(datetime(RESULT_YEAR, RESULT_MONTH, RESULT_DAY, hour=22, minute=30))
 
 ELECTION_YEAR = 2021
