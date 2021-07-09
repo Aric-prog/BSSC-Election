@@ -25,10 +25,9 @@ def index():
     resultAvailable = result_available()
     electionTeam = is_user_in_election_team(session["username"])
     if(not electionTeam):
-        print("here")
         if(total_votes() > 0):
-            print(int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100))
             resultAvailable = result_available(int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66)
+            print(resultAvailable)
     else:
         resultAvailable = True
     

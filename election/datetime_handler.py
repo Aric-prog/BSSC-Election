@@ -14,7 +14,7 @@ ELECTION_TIME = WIBTimezone.localize(datetime(ELECTION_YEAR, ELECTION_MONTH, ELE
 RESULT_YEAR = 2021
 RESULT_MONTH = 7
 RESULT_DAY = 9
-RESULT_TIME = WIBTimezone.localize(datetime(RESULT_YEAR, RESULT_MONTH, RESULT_DAY, hour=17, minute=17))
+RESULT_TIME = WIBTimezone.localize(datetime(RESULT_YEAR, RESULT_MONTH, RESULT_DAY, hour=17, minute=49))
 
 def result_available(aboveSixtySixPercentage = False) -> bool:
     now = datetime.now(WIBTimezone)
