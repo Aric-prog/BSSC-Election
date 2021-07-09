@@ -42,8 +42,9 @@ def result():
     # Give the data to the html and js
     voteAmount = total_votes()
     user_count = len(get_all_user())
-    aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66
-    print(aboveSixtySixPercent)
+    aboveSixtySixPercent = False
+    if(voteAmount > 0):
+        aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66
     if(voteAmount > 0 and (aboveSixtySixPercent or is_user_in_election_team(session["username"]))):
         winnerCandidate = most_voted_candidate()
         
