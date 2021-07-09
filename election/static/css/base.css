@@ -36,6 +36,11 @@ body{
 
 .text-large{font-size: large;}
 
+.wait{
+    font-size: 2.5rem;
+    font-weight: 1000;
+}
+
 .bg-top-right{
     background-position: right top;
     background-image: url(../assets/bg-top-right.png);

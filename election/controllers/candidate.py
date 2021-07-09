@@ -41,7 +41,10 @@ def result():
     # Calculate the highest vote
     # Give the data to the html and js
     voteAmount = total_votes()
-    if(voteAmount > 0 and (result_available() or is_user_in_election_team(session["username"]))):
+    user_count = len(get_all_user())
+    aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66
+    print(aboveSixtySixPercent)
+    if(voteAmount > 0 and (aboveSixtySixPercent or is_user_in_election_team(session["username"]))):
         winnerCandidate = most_voted_candidate()
         
         winner = {}
@@ -66,10 +69,6 @@ def result():
             if(candidate["votes"] > prevHighestVote):
                 prevHighestVote = candidate["votes"]
             candidateList.append(candidate)
-        
-        aboveSixtySixPercent = False
-        if(int((prevHighestVote / userCount) * 100) >= 66):
-            aboveSixtySixPercent = True
 
         return render_template('result.html', 
             winner=winner, 

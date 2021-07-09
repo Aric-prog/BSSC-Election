@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
-from election.db_helper import add_vote, get_all_candidate, has_suggested, has_voted, insert_suggestion
+from election.db_helper import add_vote, get_all_candidate, get_all_user, get_vote_amount_of, has_suggested, has_voted, insert_suggestion, is_user_in_election_team, most_voted_candidate, total_votes, vote_amount
 from election.db import Candidate
-from election.datetime_handler import get_current_time, get_election_date, result_available
+from election.datetime_handler import get_current_time, get_election_time, result_available, can_vote
 from datetime import datetime
 import pytz
 # Pages included here: 
@@ -20,20 +20,41 @@ def logged_in():
 @bp.route("/")
 def index():
     candidate_list = get_all_candidate_info()
+    user_count = len(get_all_user())
+
     resultAvailable = result_available()
-    if(has_voted(session["user_id"])):
+    electionTeam = is_user_in_election_team(session["username"])
+    if(not electionTeam):
+        print("here")
+        if(total_votes() > 0):
+            print(int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100))
+            resultAvailable = result_available(int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66)
+    else:
+        resultAvailable = True
+    
+    if(resultAvailable):
         return render_template('home.html',
         candidateList = candidate_list,
         electionDate = False,
         has_suggested = has_suggested(session["user_id"]),
-        resultAvailable = resultAvailable)
-    
-    return render_template('home.html',  
-        currentTime = get_current_time(),
-        electionDate = get_election_date(),
-        candidateList = candidate_list,
-        has_suggested = has_suggested(session["user_id"]),
-        resultAvailable = resultAvailable)
+        resultAvailable = resultAvailable,
+        electionTeam = electionTeam)
+    else:
+        if(has_voted(session["user_id"])):
+            return render_template('home.html',
+            candidateList = candidate_list,
+            electionDate = "",
+            has_suggested = has_suggested(session["user_id"]),
+            resultAvailable = resultAvailable,
+            electionTeam = electionTeam)
+        
+        return render_template('home.html',  
+            currentTime = get_current_time(),
+            electionDate = get_election_time(),
+            candidateList = candidate_list,
+            has_suggested = has_suggested(session["user_id"]),
+            resultAvailable = resultAvailable,
+            electionTeam = electionTeam)
     
 
 @bp.route("/check_candidate")
@@ -43,7 +64,8 @@ def check_candidate():
     return render_template('votes.html', 
         username=session["username"], 
         has_suggested = has_suggested(session["user_id"]),
-        candidateList = candidate_list)
+        candidateList = candidate_list,
+        canVote = can_vote())
 
 @bp.route("/vote")
 @bp.route("/vote/<int:candidate_id>", methods=["POST", "GET"])
@@ -56,12 +78,11 @@ def vote(candidate_id = 0):
             if(session["accepted_terms"] is None):
                 return redirect(url_for('index.rules'))
             else:
-                return render_template('votes_now.html', candidateList = candidate_list)
+                return render_template('votes_now.html', candidateList = candidate_list, canVote = can_vote())
     elif(request.method == "POST"):
         if(not candidate_id):
             return (url_for("index.vote"))
         else:
-            print(has_voted(session["user_id"]))
             if(not has_voted(session["user_id"])):
                 add_vote(candidate_id, session["user_id"])
                 # Return url for succesful vote

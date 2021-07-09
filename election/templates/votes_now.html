@@ -24,6 +24,7 @@
             {% endfor %}
         </div>
     </div>
+    {% if canVote %}
     <div class="d-flex flex-column align-items-center mt-3">
         <div class="h1 text-red font-weight-bold my-3">
             Vote Your Future Chaiman!
@@ -32,6 +33,9 @@
             Click on the image to vote.
         </div>
     </div>
+    {% else %}
+    <text class="wait bold-text text-red py-4">Not in voting period</text>
+    {% endif %}
 </div>
 <div class="bg-popup" id="popup">
     <div class="popup bg-orange d-flex flex-column align-items-center">
@@ -56,5 +60,7 @@
 {% endblock %}
 
 {% block script %}
+{% if canVote %}
 <script src="{{url_for('static', filename='js/votes_now.js')}} "></script>
+{% endif %}
 {% endblock %}

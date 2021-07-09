@@ -86,7 +86,6 @@ def get_candidate_from(question : Question) -> Candidate:
 
 def most_voted_candidate() -> Candidate:
     q1 = db.session.query(Candidate, db.func.count(Vote.vote_id).label('count')).join(Vote, Candidate.candidate_id == Vote.candidate_id).group_by(Candidate.candidate_name).order_by(db.func.count(Vote.vote_id).desc()).first()
-    print(q1)
     return q1.Candidate
 
 def get_all_user() -> list:
