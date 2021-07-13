@@ -46,7 +46,8 @@ def result():
     if(voteAmount > 0):
         aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66
         print("above sixty ", aboveSixtySixPercent)
-    if(voteAmount > 0 and (aboveSixtySixPercent or is_user_in_election_team(session["username"]))):
+    available = result_available(aboveSixtySixPercentage=aboveSixtySixPercent)
+    if(voteAmount > 0 and (available or is_user_in_election_team(session["username"]))):
         winnerCandidate = most_voted_candidate()
         
         winner = {}
