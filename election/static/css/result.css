@@ -103,7 +103,8 @@
     font-weight: 600;
     margin: 0;
     padding: 0;
-    display: inline-block;
+    display: flex;
+    justify-content: space-evenly;
     width: 500px;
     height: 300px;
     border-left: solid 1px grey;
