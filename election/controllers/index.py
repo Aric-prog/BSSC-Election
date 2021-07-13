@@ -88,7 +88,9 @@ def vote(candidate_id = 0):
             if(can_vote()):
                 if(not has_voted(session["user_id"])):
                     add_vote(candidate_id, session["user_id"])
+                    # Return url for succesful vote
                 # Redirect to page with, waiting for others to vote
+                return (url_for('index.index'))
         return (url_for("index.index"))
                 
         
