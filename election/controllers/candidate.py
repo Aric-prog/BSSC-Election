@@ -52,7 +52,7 @@ def result():
         
         winner = {}
         winner["name"] = winnerCandidate.candidate_name
-        winner["imagepath"] = winnerCandidate.candidate_name.replace(" ", "_")
+        winner["imagepath"] = winnerCandidate.candidate_name.replace(" ", "-")
         
         candidateList = []
         candidateRefList = get_all_candidate()
