@@ -5,7 +5,7 @@ button.addEventListener('click', function(e){
     var error = document.getElementById('error');
     error.innerHTML="";
     if(agree_rules.checked == false){
-        error.innerHTML = "Please centang check box ini"
+        error.innerHTML = "Please check the box below to proceed"
     }
     if(error.innerHTML != ""){
         error.style.display = 'block';
