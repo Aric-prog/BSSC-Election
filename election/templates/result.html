@@ -37,7 +37,7 @@
                         <div id="bar-1" class="bar" data-percentage="{{c['votes']}}"></div>
                         <div class="chairman-chart">
                             <div class="container-pict2"><img src="{{url_for('static',filename='assets/profile_picture/' + c['imagepath'] + '.webp')}}" alt=""></div>
-                            {{ c['name'] }}
+                            <div>{{ c['name'] }}</div>
                         </div>
                     </li>
                     {% endfor %}
