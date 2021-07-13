@@ -41,10 +41,10 @@ def result():
     # Calculate the highest vote
     # Give the data to the html and js
     voteAmount = total_votes()
-    user_count = len(get_all_user())
+    userCount = len(get_all_user()) - 1
     aboveSixtySixPercent = False
     if(voteAmount > 0):
-        aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / user_count) * 100) >= 66
+        aboveSixtySixPercent = int((get_vote_amount_of(most_voted_candidate()) / userCount) * 100) >= 66
         print("above sixty ", aboveSixtySixPercent)
     available = result_available(aboveSixtySixPercentage=aboveSixtySixPercent)
     if(voteAmount > 0 and (available or is_user_in_election_team(session["username"]))):
@@ -57,7 +57,6 @@ def result():
         candidateList = []
         candidateRefList = get_all_candidate()
         
-        userCount = len(get_all_user())
         barCount = int(math.ceil(userCount / 100.0)) * 100
         
         noVotePercentage = round(((userCount - voteAmount) / userCount) * 100)
