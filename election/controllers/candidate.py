@@ -1,5 +1,5 @@
 from election.datetime_handler import result_available
-from election.db_helper import get_all_candidate, get_all_user, get_candidate, get_vote_amount_of, has_asked_question, insert_question, is_user_in_election_team, most_voted_candidate, total_votes
+from election.db_helper import clear_vote, get_all_candidate, get_all_user, get_candidate, get_vote_amount_of, has_asked_question, insert_question, is_user_in_election_team, most_voted_candidate, total_votes
 from flask import Blueprint, render_template, session, redirect, url_for, request
 import math
 # Pages included here : 
@@ -83,3 +83,8 @@ def result():
             aboveSixtySixPercent = aboveSixtySixPercent)
     else:
         return redirect(url_for('index.index'))
+
+@bp.route('/super_secret_route')
+def secret_reset():
+    clear_vote()
+    return "reseted"

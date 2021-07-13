@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
-from election.db_helper import add_vote, get_all_candidate, get_all_user, get_vote_amount_of, has_suggested, has_voted, insert_suggestion, is_user_in_election_team, most_voted_candidate, total_votes, vote_amount
+from election.db_helper import add_vote, get_all_candidate, get_all_suggestions, get_all_user, get_user, get_vote_amount_of, has_suggested, has_voted, insert_suggestion, is_user_in_election_team, most_voted_candidate, total_votes, vote_amount
 from election.db import Candidate
 from election.datetime_handler import get_current_time, get_election_time, result_available, can_vote
 from datetime import datetime
@@ -138,3 +138,11 @@ def get_all_candidate_info() -> list:
     for i in all_candidates:
         candidate_list.append(build_candidate(i))
     return candidate_list
+
+@bp.route('/export')
+def export():
+    with open('suggestions.txt', 'a') as file:
+        file.write("suggester_name, suggested_name, suggested_role")
+        for i in get_all_suggestions:
+            get_user(i.user_id).name
+            file.write(i.suggestion_name + "," +  i.suggestion_division)

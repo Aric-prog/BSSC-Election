@@ -10,6 +10,12 @@ def reinit():
     delete()
     db.create_all()
 
+def clear_vote():
+    db.session.query(Vote).delete()
+    for i in get_all_user():
+        i.vote = 1
+    db.session.commit()
+
 # -> bool is the return type
 def has_voted(user_id : int) -> bool:
     q = User.query.filter_by(user_id = user_id).first().vote
@@ -36,6 +42,9 @@ def has_asked_question(user_id : int) -> bool:
 def vote_amount(user_id : int) -> int:
     return User.query.filter_by(user_id = user_id).first().vote
  
+def get_all_suggestions() -> list:
+    return Suggestion.query.all()
+
 def get_all_candidate() -> list:
     return Candidate.query.all()
 
