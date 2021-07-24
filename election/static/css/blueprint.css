@@ -68,7 +68,7 @@
 
 .vision-detail{
     background-color: #aacb51;
-    padding: 30px;
+    padding: 10px 30px 30px;
     border-radius: 20px;
     width: 30vw;
 }
@@ -82,7 +82,7 @@
 
 .mission-detail{
     background-color: #aacb51;
-    padding: 30px;
+    padding: 10px 30px 30px;
     border-radius: 20px;
     width: 30vw;
 }
